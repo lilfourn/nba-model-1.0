@@ -1,0 +1,742 @@
+2025-02-24 13:27:26,633 - INFO - Starting projections scheduler
+2025-02-24 13:27:26,633 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1524 NBA projections
+Found 754 players
+Found 70 stat types
+Successfully processed NBA projections:
+- Added 1 new projections
+- Found 1506 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1482 players with NBA player IDs
+Total projections in database: 1612
+
+Latest projections with player IDs:
+Kris Dunn (ID: 28128078249, Team: LAC): Pts+Rebs = 11.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:27:27.078780)
+Kris Dunn (ID: 28128078249, Team: LAC): Rebounds = 4.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:26:34.836518)
+Kris Dunn (ID: 28128078249, Team: LAC): Points = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:26:34.836518)
+Kris Dunn (ID: 28128078249, Team: LAC): Pts+Rebs+Asts = 15.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:26:34.836518)
+Kel'el Ware (ID: 940740911869, Team: MIA): Pts+Rebs = 20.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:26:34.836518)
+2025-02-24 13:27:27,137 - INFO - Completed projection fetch and store job in 0.50 seconds
+2025-02-24 13:32:27,121 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1465 NBA projections
+Found 749 players
+Found 69 stat types
+Successfully processed NBA projections:
+- Added 10 new projections
+- Found 1438 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1423 players with NBA player IDs
+Total projections in database: 1622
+
+Latest projections with player IDs:
+James Harden (ID: 28116891632, Team: LAC): Pts+Asts = 37.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:32:27.451333)
+Kris Dunn (ID: 28128078249, Team: LAC): Blks+Stls = 2.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:32:27.451333)
+Tyrese Haliburton (ID: 94054442047, Team: IND): Pts+Rebs = 22.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:32:27.451333)
+Kel'el Ware (ID: 940740911869, Team: MIA): Pts+Rebs = 21.0 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:32:27.451333)
+Tyler Herro (ID: 94914479047, Team: MIA): Pts+Rebs+Asts = 38.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:32:27.451333)
+2025-02-24 13:32:27,517 - INFO - Completed projection fetch and store job in 0.40 seconds
+2025-02-24 13:37:28,424 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1471 NBA projections
+Found 751 players
+Found 69 stat types
+Successfully processed NBA projections:
+- Added 12 new projections
+- Found 1442 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1428 players with NBA player IDs
+Total projections in database: 1634
+
+Latest projections with player IDs:
+Tyler Herro (ID: 94914479047, Team: MIA): Fantasy Score = 44.0 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:37:28.878598)
+Cade Cunningham (ID: 94804285527, Team: DET): Rebounds = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:37:28.878598)
+Tim Hardaway Jr. (ID: 28958935349, Team: DET): Pts+Rebs = 12.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:37:28.878598)
+Amir Coffey (ID: 28138596399, Team: LAC): Pts+Rebs = 15.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:37:28.878598)
+Joel Embiid (ID: 28698011729, Team: PHI): Assists = 5.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:37:28.878598)
+2025-02-24 13:37:28,942 - INFO - Completed projection fetch and store job in 0.52 seconds
+2025-02-24 13:42:29,865 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1508 NBA projections
+Found 747 players
+Found 69 stat types
+Successfully processed NBA projections:
+- Added 35 new projections
+- Found 1456 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1465 players with NBA player IDs
+Total projections in database: 1669
+
+Latest projections with player IDs:
+Kris Dunn (ID: 28128078249, Team: LAC): Pts+Asts = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:42:30.197167)
+Aaron Gordon (ID: 28978111729, Team: DEN): Fantasy Score = 27.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:42:30.197167)
+Aaron Gordon (ID: 28978111729, Team: DEN): Pts+Asts = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:42:30.197167)
+Joel Embiid (ID: 28698011729, Team: PHI): Pts+Rebs+Asts = 42.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:42:30.197167)
+Joel Embiid (ID: 28698011729, Team: PHI): Pts+Asts = 31.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:42:30.197167)
+2025-02-24 13:42:30,265 - INFO - Completed projection fetch and store job in 0.40 seconds
+2025-02-24 13:47:31,225 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1595 NBA projections
+Found 801 players
+Found 69 stat types
+Successfully processed NBA projections:
+- Added 30 new projections
+- Found 1548 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1552 players with NBA player IDs
+Total projections in database: 1699
+
+Latest projections with player IDs:
+Aaron Gordon (ID: 28978111729, Team: DEN): Fantasy Score = 28.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:47:31.594145)
+Anthony Edwards (ID: 94344202027, Team: MIN): Pts+Rebs = 33.0 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:47:31.594145)
+Anthony Edwards (ID: 94344202027, Team: MIN): Rebounds = 6.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:47:31.594145)
+Jaden McDaniels (ID: 94484429027, Team: MIN): Pts+Rebs = 21.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:47:31.594145)
+Jalen Williams (ID: 94624262027, Team: OKC): Assists = 5.0 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:47:31.594145)
+2025-02-24 13:47:31,663 - INFO - Completed projection fetch and store job in 0.44 seconds
+2025-02-24 13:52:32,611 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1629 NBA projections
+Found 806 players
+Found 69 stat types
+Successfully processed NBA projections:
+- Added 21 new projections
+- Found 1591 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1586 players with NBA player IDs
+Total projections in database: 1720
+
+Latest projections with player IDs:
+Nikola Jokic (ID: 28908111729, Team: DEN): Points = 28.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:52:33.090215)
+Isaiah Hartenstein (ID: 28338669069, Team: OKC): Pts+Asts = 14.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:52:33.090215)
+Isaiah Hartenstein (ID: 28338669069, Team: OKC): Points = 10.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:52:33.090215)
+Jalen Williams (ID: 94624262027, Team: OKC): Pts+Rebs+Asts = 30.0 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:52:33.090215)
+Jalen Williams (ID: 94624262027, Team: OKC): Points = 20.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T13:52:33.090215)
+2025-02-24 13:52:33,160 - INFO - Completed projection fetch and store job in 0.55 seconds
+2025-02-24 13:57:34,081 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1651 NBA projections
+Found 810 players
+Found 69 stat types
+Successfully processed NBA projections:
+- Added 18 new projections
+- Found 1616 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1608 players with NBA player IDs
+Total projections in database: 1738
+
+Latest projections with player IDs:
+Paul George (ID: 28268421152, Team: PHI): Points = 18.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:57:34.342331)
+Kyshawn George (ID: 945947397989, Team: WAS): Pts+Rebs+Asts = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T13:57:34.342331)
+Trae Young (ID: 28978646789, Team: ATL): Points = 28.0 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:57:34.342331)
+Trae Young (ID: 28978646789, Team: ATL): Points = 37.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:57:34.342331)
+Trae Young (ID: 28978646789, Team: ATL): Points = 23.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T13:57:34.342331)
+2025-02-24 13:57:34,417 - INFO - Completed projection fetch and store job in 0.34 seconds
+2025-02-24 14:02:35,331 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1660 NBA projections
+Found 780 players
+Found 63 stat types
+Successfully processed NBA projections:
+- Added 12 new projections
+- Found 1631 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1618 players with NBA player IDs
+Total projections in database: 1750
+
+Latest projections with player IDs:
+Ausar Thompson (ID: 940047414489, Team: DET): Rebounds = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:02:35.650553)
+Jalen Duren (ID: 940347735539, Team: DET): Rebounds = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:02:35.650553)
+Nikola Vucevic (ID: 28268405032, Team: CHI): Rebounds = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:02:35.650553)
+Matas Buzelis (ID: 947540715989, Team: CHI): Rebounds = 4.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:02:35.650553)
+Anthony Edwards (ID: 94344202027, Team: MIN): Rebounds = 6.0 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T14:02:35.650553)
+2025-02-24 14:02:35,721 - INFO - Completed projection fetch and store job in 0.39 seconds
+2025-02-24 14:07:36,646 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1679 NBA projections
+Found 778 players
+Found 63 stat types
+Successfully processed NBA projections:
+- Added 21 new projections
+- Found 1641 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1637 players with NBA player IDs
+Total projections in database: 1771
+
+Latest projections with player IDs:
+James Harden (ID: 28116891632, Team: LAC): Pts+Rebs+Asts = 43.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:07:36.957691)
+Josh Giddey (ID: 941649430339, Team: CHI): Assists = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:07:36.957691)
+Quentin Grimes (ID: 94544429047, Team: PHI): Assists = 4.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:07:36.957691)
+Lonzo Ball (ID: 28368516399, Team: CHI): Assists = 4.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:07:36.957691)
+Guerschon Yabusele (ID: 28498171099, Team: PHI): Assists = 2.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:07:36.957691)
+2025-02-24 14:07:37,033 - INFO - Completed projection fetch and store job in 0.39 seconds
+2025-02-24 14:12:37,975 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1679 NBA projections
+Found 765 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 6 new projections
+- Found 1656 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1637 players with NBA player IDs
+Total projections in database: 1777
+
+Latest projections with player IDs:
+Jordan Poole (ID: 28488839869, Team: WAS): Pts+Rebs+Asts = 29.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+Jalen Williams (ID: 94624262027, Team: OKC): Rebs+Asts = 9.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+Keyonte George (ID: 945447821869, Team: UTA): Rebs+Asts = 9.5 (Start: 2025-02-24T21:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+Kyle Filipowski (ID: 948347491869, Team: UTA): Rebs+Asts = 11.5 (Start: 2025-02-24T21:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+Kyle Filipowski (ID: 948347491869, Team: UTA): Rebounds = 8.5 (Start: 2025-02-24T21:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+2025-02-24 14:12:38,437 - INFO - Completed projection fetch and store job in 0.46 seconds
+2025-02-24 14:17:39,359 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1687 NBA projections
+Found 767 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 12 new projections
+- Found 1658 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1638 players with NBA player IDs
+Total projections in database: 1789
+
+Latest projections with player IDs:
+Guerschon Yabusele (ID: 28498171099, Team: PHI): Rebounds = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:17:39.728582)
+Khris Middleton (ID: 28728269882, Team: WAS): Pts+Rebs+Asts = 21.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:17:39.728582)
+Mike Conley (ID: 28236562792, Team: MIN): Rebs+Asts = 7.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T14:17:39.728582)
+Jordan Poole (ID: 28488839869, Team: WAS): Pts+Rebs+Asts = 29.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+Jalen Williams (ID: 94624262027, Team: OKC): Rebs+Asts = 9.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+2025-02-24 14:17:39,803 - INFO - Completed projection fetch and store job in 0.44 seconds
+2025-02-24 14:22:40,728 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1685 NBA projections
+Found 767 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 1 new projections
+- Found 1667 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1636 players with NBA player IDs
+Total projections in database: 1790
+
+Latest projections with player IDs:
+Guerschon Yabusele (ID: 28498171099, Team: PHI): Rebounds = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:17:39.728582)
+Khris Middleton (ID: 28728269882, Team: WAS): Pts+Rebs+Asts = 21.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:17:39.728582)
+Mike Conley (ID: 28236562792, Team: MIN): Rebs+Asts = 7.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T14:17:39.728582)
+Jordan Poole (ID: 28488839869, Team: WAS): Pts+Rebs+Asts = 29.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+Jalen Williams (ID: 94624262027, Team: OKC): Rebs+Asts = 9.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T14:12:38.363082)
+2025-02-24 14:22:41,086 - INFO - Completed projection fetch and store job in 0.36 seconds
+2025-02-24 14:27:42,067 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1684 NBA projections
+Found 767 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 13 new projections
+- Found 1654 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1635 players with NBA player IDs
+Total projections in database: 1803
+
+Latest projections with player IDs:
+Tyler Herro (ID: 94914479047, Team: MIA): Fantasy Score = 43.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T14:27:42.500613)
+Andrew Nembhard (ID: 94174482047, Team: IND): Fantasy Score = 25.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:27:42.500613)
+Pascal Siakam (ID: 28228035129, Team: IND): Fantasy Score = 36.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:27:42.500613)
+Russell Westbrook (ID: 28116619932, Team: DEN): Fantasy Score = 26.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:27:42.500613)
+Tyrese Maxey (ID: 94854409027, Team: PHI): Fantasy Score = 48.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:27:42.500613)
+2025-02-24 14:27:42,574 - INFO - Completed projection fetch and store job in 0.51 seconds
+2025-02-24 14:32:42,995 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1681 NBA projections
+Found 753 players
+Found 60 stat types
+Successfully processed NBA projections:
+- Added 29 new projections
+- Found 1635 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1632 players with NBA player IDs
+Total projections in database: 1832
+
+Latest projections with player IDs:
+Jalen Duren (ID: 940347735539, Team: DET): Fantasy Score = 33.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:32:43.478167)
+Tobias Harris (ID: 28478964652, Team: DET): Fantasy Score = 27.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:32:43.478167)
+Aaron Gordon (ID: 28978111729, Team: DEN): Fantasy Score = 29.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:32:43.478167)
+Christian Braun (ID: 94534209027, Team: DEN): Fantasy Score = 27.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:32:43.478167)
+Jamal Murray (ID: 28918559499, Team: DEN): Fantasy Score = 36.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:32:43.478167)
+2025-02-24 14:32:43,552 - INFO - Completed projection fetch and store job in 0.56 seconds
+2025-02-24 14:37:44,545 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1674 NBA projections
+Found 760 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 8 new projections
+- Found 1649 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1625 players with NBA player IDs
+Total projections in database: 1840
+
+Latest projections with player IDs:
+James Harden (ID: 28116891632, Team: LAC): Rebs+Asts = 15.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:37:44.817411)
+Tim Hardaway Jr. (ID: 28958935349, Team: DET): 3-PT Attempted = 6.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:37:44.817411)
+Jamal Murray (ID: 28918559499, Team: DEN): 3-PT Made = 2.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:37:44.817411)
+Jamal Murray (ID: 28918559499, Team: DEN): 3-PT Attempted = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:37:44.817411)
+Michael Porter Jr. (ID: 28698659869, Team: DEN): FG Attempted = 14.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:37:44.817411)
+2025-02-24 14:37:44,890 - INFO - Completed projection fetch and store job in 0.34 seconds
+2025-02-24 14:42:45,768 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1680 NBA projections
+Found 805 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 13 new projections
+- Found 1650 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1631 players with NBA player IDs
+Total projections in database: 1853
+
+Latest projections with player IDs:
+Ausar Thompson (ID: 940047414489, Team: DET): Pts+Rebs = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:42:46.033522)
+Ausar Thompson (ID: 940047414489, Team: DET): Fantasy Score = 26.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:42:46.033522)
+Ausar Thompson (ID: 940047414489, Team: DET): Points = 11.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:42:46.033522)
+Ausar Thompson (ID: 940047414489, Team: DET): Pts+Asts = 14.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:42:46.033522)
+Tobias Harris (ID: 28478964652, Team: DET): Pts+Asts = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:42:46.033522)
+2025-02-24 14:42:46,100 - INFO - Completed projection fetch and store job in 0.33 seconds
+2025-02-24 14:47:47,044 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1679 NBA projections
+Found 830 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 4 new projections
+- Found 1658 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1630 players with NBA player IDs
+Total projections in database: 1857
+
+Latest projections with player IDs:
+Aaron Nesmith (ID: 28458892047, Team: IND): Pts+Asts = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:47:47.339863)
+Nikola Jokic (ID: 28908111729, Team: DEN): Pts+Rebs+Asts = 51.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:47:47.339863)
+Ziaire Williams (ID: 94324235527, Team: BKN): Points = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:47:47.339863)
+Domantas Sabonis (ID: 28118309129, Team: SAC): Pts+Rebs+Asts = 40.0 (Start: 2025-02-24T22:10:00-05:00, Added: 2025-02-24T14:47:47.339863)
+Ausar Thompson (ID: 940047414489, Team: DET): Pts+Rebs = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:42:46.033522)
+2025-02-24 14:47:47,411 - INFO - Completed projection fetch and store job in 0.37 seconds
+2025-02-24 14:52:48,404 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1706 NBA projections
+Found 842 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 28 new projections
+- Found 1661 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1657 players with NBA player IDs
+Total projections in database: 1885
+
+Latest projections with player IDs:
+Obi Toppin (ID: 28278699869, Team: IND): Assists = 1.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:52:48.710314)
+Obi Toppin (ID: 28278699869, Team: IND): Pts+Rebs = 14.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:52:48.710314)
+Obi Toppin (ID: 28278699869, Team: IND): Pts+Rebs+Asts = 17.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:52:48.710314)
+Obi Toppin (ID: 28278699869, Team: IND): Points = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:52:48.710314)
+Obi Toppin (ID: 28278699869, Team: IND): Pts+Asts = 12.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:52:48.710314)
+2025-02-24 14:52:48,790 - INFO - Completed projection fetch and store job in 0.39 seconds
+2025-02-24 14:57:49,672 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1722 NBA projections
+Found 844 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 19 new projections
+- Found 1686 existing identical projections (preserved)
+- Skipped 17 combo projections
+- Matched 1673 players with NBA player IDs
+Total projections in database: 1904
+
+Latest projections with player IDs:
+T.J. McConnell (ID: 28148956829, Team: IND): Points = 7.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:57:50.327258)
+T.J. McConnell (ID: 28148956829, Team: IND): Pts+Rebs = 9.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:57:50.327258)
+T.J. McConnell (ID: 28148956829, Team: IND): Assists = 5.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:57:50.327258)
+T.J. McConnell (ID: 28148956829, Team: IND): Pts+Asts = 12.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:57:50.327258)
+T.J. McConnell (ID: 28148956829, Team: IND): Pts+Rebs+Asts = 14.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T14:57:50.327258)
+2025-02-24 14:57:50,400 - INFO - Completed projection fetch and store job in 0.73 seconds
+2025-02-24 15:02:51,242 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1724 NBA projections
+Found 904 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 17 new projections
+- Found 1691 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1674 players with NBA player IDs
+Total projections in database: 1921
+
+Latest projections with player IDs:
+Myles Turner (ID: 28178389129, Team: IND): Pts+Rebs+Asts = 23.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:02:51.778430)
+Pascal Siakam (ID: 28228035129, Team: IND): Pts+Rebs = 26.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:02:51.778430)
+Bennedict Mathurin (ID: 94574916527, Team: IND): Pts+Rebs = 17.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:02:51.778430)
+T.J. McConnell (ID: 28148956829, Team: IND): Assists = 4.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:02:51.778430)
+Cameron Johnson (ID: 28958359129, Team: BKN): Pts+Asts = 24.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:02:51.778430)
+2025-02-24 15:02:51,857 - INFO - Completed projection fetch and store job in 0.62 seconds
+2025-02-24 15:07:52,725 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1706 NBA projections
+Found 926 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 16 new projections
+- Found 1674 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1653 players with NBA player IDs
+Total projections in database: 1937
+
+Latest projections with player IDs:
+James Harden (ID: 28116891632, Team: LAC): Pts+Rebs = 32.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:07:52.980095)
+Aaron Nesmith (ID: 28458892047, Team: IND): Points = 9.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:07:52.980095)
+Bennedict Mathurin (ID: 94574916527, Team: IND): Pts+Rebs = 18.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:07:52.980095)
+Obi Toppin (ID: 28278699869, Team: IND): Pts+Rebs+Asts = 17.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:07:52.980095)
+Nikola Vucevic (ID: 28268405032, Team: CHI): Pts+Asts = 22.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:07:52.980095)
+2025-02-24 15:07:53,053 - INFO - Completed projection fetch and store job in 0.33 seconds
+2025-02-24 15:12:53,965 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1728 NBA projections
+Found 928 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 17 new projections
+- Found 1695 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1675 players with NBA player IDs
+Total projections in database: 1954
+
+Latest projections with player IDs:
+Malik Beasley (ID: 28058319499, Team: DET): Rebounds = 2.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:12:54.607167)
+Malik Beasley (ID: 28058319499, Team: DET): Points = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:12:54.607167)
+Malik Beasley (ID: 28058319499, Team: DET): Pts+Rebs+Asts = 19.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:12:54.607167)
+Malik Beasley (ID: 28058319499, Team: DET): Pts+Rebs = 18.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:12:54.607167)
+Christian Braun (ID: 94534209027, Team: DEN): Pts+Rebs+Asts = 21.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:12:54.607167)
+2025-02-24 15:12:54,682 - INFO - Completed projection fetch and store job in 0.72 seconds
+2025-02-24 15:17:55,650 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1731 NBA projections
+Found 928 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 19 new projections
+- Found 1696 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1678 players with NBA player IDs
+Total projections in database: 1973
+
+Latest projections with player IDs:
+Malik Beasley (ID: 28058319499, Team: DET): Points = 15.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:17:56.276939)
+Isaiah Stewart (ID: 94744229027, Team: DET): Pts+Rebs = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:17:56.276939)
+Isaiah Stewart (ID: 94744229027, Team: DET): Points = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:17:56.276939)
+Isaiah Stewart (ID: 94744229027, Team: DET): Pts+Rebs+Asts = 11.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:17:56.276939)
+Isaiah Stewart (ID: 94744229027, Team: DET): Pts+Asts = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:17:56.276939)
+2025-02-24 15:17:56,351 - INFO - Completed projection fetch and store job in 0.70 seconds
+2025-02-24 15:22:56,552 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1730 NBA projections
+Found 919 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 9 new projections
+- Found 1705 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1677 players with NBA player IDs
+Total projections in database: 1982
+
+Latest projections with player IDs:
+Russell Westbrook (ID: 28116619932, Team: DEN): Pts+Rebs+Asts = 22.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:22:56.980401)
+Obi Toppin (ID: 28278699869, Team: IND): Points = 9.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:22:56.980401)
+Pascal Siakam (ID: 28228035129, Team: IND): Points = 27.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:22:56.980401)
+Ziaire Williams (ID: 94324235527, Team: BKN): Pts+Asts = 12.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:22:56.980401)
+Jalen Williams (ID: 94624262027, Team: OKC): Assists = 4.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T15:22:56.980401)
+2025-02-24 15:22:57,058 - INFO - Completed projection fetch and store job in 0.51 seconds
+2025-02-24 15:27:57,907 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1735 NBA projections
+Found 920 players
+Found 61 stat types
+Successfully processed NBA projections:
+- Added 13 new projections
+- Found 1706 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1682 players with NBA player IDs
+Total projections in database: 1995
+
+Latest projections with player IDs:
+Derrick Jones Jr. (ID: 28158545399, Team: LAC): Pts+Rebs+Asts = 15.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:27:58.643421)
+Obi Toppin (ID: 28278699869, Team: IND): Points = 10.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:27:58.643421)
+Cameron Johnson (ID: 28958359129, Team: BKN): FG Attempted = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:27:58.643421)
+Cameron Johnson (ID: 28958359129, Team: BKN): FG Made = 7.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:27:58.643421)
+Keon Johnson (ID: 94034965527, Team: BKN): 3-PT Attempted = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:27:58.643421)
+2025-02-24 15:27:58,718 - INFO - Completed projection fetch and store job in 0.81 seconds
+2025-02-24 15:32:59,683 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1745 NBA projections
+Found 995 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 8 new projections
+- Found 1721 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1692 players with NBA player IDs
+Total projections in database: 2003
+
+Latest projections with player IDs:
+Malik Beasley (ID: 28058319499, Team: DET): Pts+Rebs+Asts = 19.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:33:00.672928)
+Obi Toppin (ID: 28278699869, Team: IND): Pts+Rebs+Asts = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:33:00.672928)
+Aaron Wiggins (ID: 28288809047, Team: OKC): Pts+Asts = 12.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T15:33:00.672928)
+Aaron Wiggins (ID: 28288809047, Team: OKC): Rebounds = 3.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T15:33:00.672928)
+Aaron Wiggins (ID: 28288809047, Team: OKC): Points = 10.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T15:33:00.672928)
+2025-02-24 15:33:00,749 - INFO - Completed projection fetch and store job in 1.07 seconds
+2025-02-24 15:38:01,630 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1747 NBA projections
+Found 998 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 9 new projections
+- Found 1722 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1694 players with NBA player IDs
+Total projections in database: 2012
+
+Latest projections with player IDs:
+Day'Ron Sharpe (ID: 94924235527, Team: BKN): Pts+Rebs+Asts = 18.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:38:02.273585)
+Day'Ron Sharpe (ID: 94924235527, Team: BKN): Points = 9.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:38:02.273585)
+Kyshawn George (ID: 945947397989, Team: WAS): Rebounds = 4.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:38:02.273585)
+Mouhamed Gueye (ID: 943649135539, Team: ATL): Rebounds = 3.0 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T15:38:02.273585)
+Trae Young (ID: 28978646789, Team: ATL): Points = 27.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T15:38:02.273585)
+2025-02-24 15:38:02,350 - INFO - Completed projection fetch and store job in 0.72 seconds
+2025-02-24 15:43:03,299 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1752 NBA projections
+Found 998 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 31 new projections
+- Found 1705 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1699 players with NBA player IDs
+Total projections in database: 2043
+
+Latest projections with player IDs:
+James Harden (ID: 28116891632, Team: LAC): Fantasy Score = 49.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:43:03.611325)
+Andrew Nembhard (ID: 94174482047, Team: IND): Fantasy Score = 24.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:43:03.611325)
+Jamal Murray (ID: 28918559499, Team: DEN): Fantasy Score = 37.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:43:03.611325)
+Pascal Siakam (ID: 28228035129, Team: IND): Fantasy Score = 36.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:43:03.611325)
+Michael Porter Jr. (ID: 28698659869, Team: DEN): Fantasy Score = 30.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:43:03.611325)
+2025-02-24 15:43:03,689 - INFO - Completed projection fetch and store job in 0.39 seconds
+2025-02-24 15:48:04,591 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1749 NBA projections
+Found 998 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 13 new projections
+- Found 1720 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1696 players with NBA player IDs
+Total projections in database: 2056
+
+Latest projections with player IDs:
+Jamal Murray (ID: 28918559499, Team: DEN): 3-PT Attempted = 7.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:48:04.918475)
+Tyrese Haliburton (ID: 94054442047, Team: IND): FG Made = 7.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:48:04.918475)
+Nikola Jokic (ID: 28908111729, Team: DEN): Defensive Rebounds = 10.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:48:04.918475)
+Nikola Jokic (ID: 28908111729, Team: DEN): Rebounds = 13.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:48:04.918475)
+Josh Giddey (ID: 941649430339, Team: CHI): 3-PT Attempted = 5.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:48:04.918475)
+2025-02-24 15:48:04,996 - INFO - Completed projection fetch and store job in 0.40 seconds
+2025-02-24 15:53:05,924 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1759 NBA projections
+Found 1000 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 17 new projections
+- Found 1726 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1706 players with NBA player IDs
+Total projections in database: 2073
+
+Latest projections with player IDs:
+Jalen Duren (ID: 940347735539, Team: DET): Rebs+Asts = 14.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:53:06.253248)
+Jalen Duren (ID: 940347735539, Team: DET): Defensive Rebounds = 8.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:53:06.253248)
+Tobias Harris (ID: 28478964652, Team: DET): FG Made = 6.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:53:06.253248)
+Tobias Harris (ID: 28478964652, Team: DET): FG Attempted = 12.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:53:06.253248)
+Jalen Duren (ID: 940347735539, Team: DET): Pts+Rebs+Asts = 26.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:53:06.253248)
+2025-02-24 15:53:06,330 - INFO - Completed projection fetch and store job in 0.41 seconds
+2025-02-24 15:58:07,239 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1763 NBA projections
+Found 1001 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 7 new projections
+- Found 1740 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1710 players with NBA player IDs
+Total projections in database: 2080
+
+Latest projections with player IDs:
+Ben Sheppard (ID: 94644282027, Team: IND): Pts+Rebs = 7.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:58:07.575054)
+Ben Sheppard (ID: 94644282027, Team: IND): Points = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:58:07.575054)
+Ben Sheppard (ID: 94644282027, Team: IND): Pts+Rebs+Asts = 8.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:58:07.575054)
+Ben Sheppard (ID: 94644282027, Team: IND): Steals = 0.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:58:07.575054)
+Carlton Carrington (ID: 942241927989, Team: WAS): Pts+Rebs+Asts = 16.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T15:58:07.575054)
+2025-02-24 15:58:07,653 - INFO - Completed projection fetch and store job in 0.41 seconds
+2025-02-24 16:03:08,618 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1761 NBA projections
+Found 999 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 11 new projections
+- Found 1734 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1708 players with NBA player IDs
+Total projections in database: 2091
+
+Latest projections with player IDs:
+Russell Westbrook (ID: 28116619932, Team: DEN): Assists = 4.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:03:09.041156)
+T.J. McConnell (ID: 28148956829, Team: IND): Pts+Rebs+Asts = 14.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:03:09.041156)
+Thomas Bryant (ID: 28268539499, Team: IND): Pts+Rebs+Asts = 11.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:03:09.041156)
+Thomas Bryant (ID: 28268539499, Team: IND): Pts+Rebs = 10.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:03:09.041156)
+Thomas Bryant (ID: 28268539499, Team: IND): Pts+Asts = 7.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:03:09.041156)
+2025-02-24 16:03:09,120 - INFO - Completed projection fetch and store job in 0.50 seconds
+2025-02-24 16:08:10,021 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1758 NBA projections
+Found 999 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 5 new projections
+- Found 1737 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1705 players with NBA player IDs
+Total projections in database: 2096
+
+Latest projections with player IDs:
+Jamal Murray (ID: 28918559499, Team: DEN): Rebs+Asts = 9.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:08:10.537153)
+Russell Westbrook (ID: 28116619932, Team: DEN): Rebs+Asts = 9.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:08:10.537153)
+Tyler Herro (ID: 94914479047, Team: MIA): Pts+Rebs = 32.0 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T16:08:10.537153)
+Anthony Edwards (ID: 94344202027, Team: MIN): Free Throws Made = 5.5 (Start: 2025-02-24T20:10:00-05:00, Added: 2025-02-24T16:08:10.537153)
+Donovan Clingan (ID: 944340671869, Team: POR): Rebounds = 10.0 (Start: 2025-02-24T21:10:00-05:00, Added: 2025-02-24T16:08:10.537153)
+2025-02-24 16:08:10,614 - INFO - Completed projection fetch and store job in 0.59 seconds
+2025-02-24 16:13:11,516 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1761 NBA projections
+Found 1029 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 6 new projections
+- Found 1739 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1708 players with NBA player IDs
+Total projections in database: 2102
+
+Latest projections with player IDs:
+Malik Beasley (ID: 28058319499, Team: DET): Points = 14.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:13:11.770694)
+T.J. McConnell (ID: 28148956829, Team: IND): Assists = 4.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:13:11.770694)
+Coby White (ID: 94704402047, Team: CHI): Assists = 4.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:13:11.770694)
+Bilal Coulibaly (ID: 947740472289, Team: WAS): Rebounds = 4.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:13:11.770694)
+Onyeka Okongwu (ID: 94054452027, Team: ATL): Pts+Rebs+Asts = 24.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T16:13:11.770694)
+2025-02-24 16:13:11,843 - INFO - Completed projection fetch and store job in 0.33 seconds
+2025-02-24 16:18:12,780 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1755 NBA projections
+Found 1039 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 9 new projections
+- Found 1730 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1702 players with NBA player IDs
+Total projections in database: 2111
+
+Latest projections with player IDs:
+James Harden (ID: 28116891632, Team: LAC): Assists = 9.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:18:13.107627)
+Aaron Gordon (ID: 28978111729, Team: DEN): Pts+Rebs+Asts = 23.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:18:13.107627)
+Ziaire Williams (ID: 94324235527, Team: BKN): Rebounds = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:18:13.107627)
+Onyeka Okongwu (ID: 94054452027, Team: ATL): Pts+Rebs = 22.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T16:18:13.107627)
+Tyler Herro (ID: 94914479047, Team: MIA): Points = 25.5 (Start: 2025-02-24T19:40:00-05:00, Added: 2025-02-24T16:18:13.107627)
+2025-02-24 16:18:13,185 - INFO - Completed projection fetch and store job in 0.41 seconds
+2025-02-24 16:23:14,115 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1738 NBA projections
+Found 1037 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 11 new projections
+- Found 1711 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1686 players with NBA player IDs
+Total projections in database: 2122
+
+Latest projections with player IDs:
+Aaron Gordon (ID: 28978111729, Team: DEN): Rebounds = 5.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:23:14.422318)
+Julian Phillips (ID: 941447431869, Team: CHI): Pts+Rebs+Asts = 11.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:23:14.422318)
+Khris Middleton (ID: 28728269882, Team: WAS): Pts+Asts = 18.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:23:14.422318)
+Bilal Coulibaly (ID: 947740472289, Team: WAS): Points = 13.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:23:14.422318)
+Bilal Coulibaly (ID: 947740472289, Team: WAS): Pts+Asts = 17.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:23:14.422318)
+2025-02-24 16:23:14,500 - INFO - Completed projection fetch and store job in 0.39 seconds
+2025-02-24 16:28:15,433 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1728 NBA projections
+Found 1038 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 16 new projections
+- Found 1696 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1676 players with NBA player IDs
+Total projections in database: 2138
+
+Latest projections with player IDs:
+Malik Beasley (ID: 28058319499, Team: DET): Pts+Rebs = 17.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:28:15.695724)
+Andrew Nembhard (ID: 94174482047, Team: IND): Pts+Asts = 15.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:28:15.695724)
+Pascal Siakam (ID: 28228035129, Team: IND): Assists = 3.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:28:15.695724)
+Michael Porter Jr. (ID: 28698659869, Team: DEN): Rebounds = 6.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:28:15.695724)
+Obi Toppin (ID: 28278699869, Team: IND): Pts+Asts = 11.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:28:15.695724)
+2025-02-24 16:28:15,769 - INFO - Completed projection fetch and store job in 0.34 seconds
+2025-02-24 16:33:16,695 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1718 NBA projections
+Found 1033 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 4 new projections
+- Found 1698 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1667 players with NBA player IDs
+Total projections in database: 2142
+
+Latest projections with player IDs:
+Aaron Nesmith (ID: 28458892047, Team: IND): Pts+Rebs+Asts = 14.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:33:17.390007)
+Andrew Nembhard (ID: 94174482047, Team: IND): Assists = 5.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:33:17.390007)
+Pascal Siakam (ID: 28228035129, Team: IND): Rebounds = 7.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:33:17.390007)
+Pascal Siakam (ID: 28228035129, Team: IND): Rebs+Asts = 10.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:33:17.390007)
+Malik Beasley (ID: 28058319499, Team: DET): Pts+Rebs = 17.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:28:15.695724)
+2025-02-24 16:33:17,464 - INFO - Completed projection fetch and store job in 0.77 seconds
+2025-02-24 16:38:18,380 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 1724 NBA projections
+Found 1033 players
+Found 66 stat types
+Successfully processed NBA projections:
+- Added 10 new projections
+- Found 1698 existing identical projections (preserved)
+- Skipped 16 combo projections
+- Matched 1673 players with NBA player IDs
+Total projections in database: 2152
+
+Latest projections with player IDs:
+Pascal Siakam (ID: 28228035129, Team: IND): Pts+Rebs+Asts = 31.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:38:19.023946)
+Coby White (ID: 94704402047, Team: CHI): Pts+Asts = 25.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:38:19.023946)
+Matas Buzelis (ID: 947540715989, Team: CHI): Points = 12.0 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:38:19.023946)
+Matas Buzelis (ID: 947540715989, Team: CHI): Pts+Rebs = 16.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:38:19.023946)
+Lonzo Ball (ID: 28368516399, Team: CHI): Rebs+Asts = 8.5 (Start: 2025-02-24T19:10:00-05:00, Added: 2025-02-24T16:38:19.023946)
+2025-02-24 16:38:19,102 - INFO - Completed projection fetch and store job in 0.72 seconds
