@@ -51,7 +51,6 @@ class GameStats:
     """Data class for game statistics."""
     player_id: str
     game_id: str
-    season: str
     game_date: str
     team: str
     opponent: str
@@ -93,7 +92,6 @@ def setup_database() -> None:
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             player_id TEXT NOT NULL,
             game_id TEXT NOT NULL,
-            season TEXT NOT NULL,
             game_date TEXT NOT NULL,
             team TEXT,
             opponent TEXT,
@@ -148,15 +146,15 @@ def get_player_ids() -> List[Tuple[str, str]]:
     finally:
         connection.close()
 
-def get_existing_game_ids(player_id: str, season: str) -> set:
-    """Get existing game IDs for a player and season to avoid duplicates."""
+def get_existing_game_ids(player_id: str) -> set:
+    """Get existing game IDs for a player to avoid duplicates."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
     try:
         cursor.execute(
-            "SELECT game_id FROM player_game_stats WHERE player_id = ? AND season = ?",
-            (player_id, season)
+            "SELECT game_id FROM player_game_stats WHERE player_id = ?",
+            (player_id,)
         )
         existing_game_ids = {row[0] for row in cursor.fetchall()}
         return existing_game_ids
@@ -179,16 +177,15 @@ def fetch_player_games(player_data: Tuple[str, str], season: str) -> Dict[str, A
     player_id = str(player_id)
     
     # Check if we already have game data for this player
-    existing_game_ids = get_existing_game_ids(player_id, season)
+    existing_game_ids = get_existing_game_ids(player_id)
     
     # Skip API call if player already has a substantial number of games for this season
     # NBA regular season has 82 games, so if we have more than 75, likely complete
     if len(existing_game_ids) > 75:
-        logging.debug(f"Skipping {player_name} (ID: {player_id}) for season {season} - already have {len(existing_game_ids)} games")
+        logging.debug(f"Skipping {player_name} (ID: {player_id}) - already have {len(existing_game_ids)} games")
         return {
             "player_id": player_id, 
             "player_name": player_name,
-            "season": season, 
             "success": True, 
             "skipped": True, 
             "existing_games": len(existing_game_ids)
@@ -197,7 +194,7 @@ def fetch_player_games(player_data: Tuple[str, str], season: str) -> Dict[str, A
     # Create querystring exactly like the example
     querystring = {
         "playerID": player_id,
-        "season": str(season),
+        "season": str(2022),
         "fantasyPoints": "true",
         "pts": "1",
         "reb": "1.25",
@@ -214,7 +211,7 @@ def fetch_player_games(player_data: Tuple[str, str], season: str) -> Dict[str, A
     try:
         # Add slight delay to avoid rate limits
         time.sleep(0.1)
-        logging.debug(f"Fetching data for {player_name} (ID: {player_id}) for season {season}")
+        logging.debug(f"Fetching data for {player_name} (ID: {player_id})")
         logging.debug(f"Query parameters: {querystring}")
         
         response = requests.get(url, headers=headers, params=querystring)
@@ -226,36 +223,34 @@ def fetch_player_games(player_data: Tuple[str, str], season: str) -> Dict[str, A
                 logging.debug(f"API Response for {player_name}: {data}")
                 if 'body' not in data:
                     logging.error(f"Invalid API response format for {player_name} (ID: {player_id}): {data}")
-                    return {"player_id": player_id, "season": season, "success": False, "error": "Invalid API response format"}
+                    return {"player_id": player_id, "success": False, "error": "Invalid API response format"}
                 
                 # Add existing_game_ids to the result so we can filter them later
                 return {
                     "player_id": player_id, 
                     "player_name": player_name, 
-                    "season": season, 
                     "data": data, 
                     "success": True, 
                     "existing_game_ids": existing_game_ids
                 }
             except json.JSONDecodeError as e:
                 logging.error(f"Failed to parse JSON for {player_name} (ID: {player_id}): {e}\nResponse: {response_text}")
-                return {"player_id": player_id, "season": season, "success": False, "error": f"JSON parse error: {str(e)}"}
+                return {"player_id": player_id, "success": False, "error": f"JSON parse error: {str(e)}"}
         else:
             logging.error(f"API request failed for {player_name} (ID: {player_id}): Status {response.status_code}\nResponse: {response_text}")
-            return {"player_id": player_id, "season": season, "success": False, "error": f"Status code: {response.status_code}"}
+            return {"player_id": player_id, "success": False, "error": f"Status code: {response.status_code}"}
             
     except Exception as e:
         logging.error(f"Exception while fetching data for {player_name} (ID: {player_id}): {str(e)}")
-        return {"player_id": player_id, "season": season, "success": False, "error": str(e)}
+        return {"player_id": player_id, "success": False, "error": str(e)}
 
-def parse_game_data(game_id: str, game_data: Dict[str, Any], player_id: str, season: str) -> Optional[Dict[str, Any]]:
+def parse_game_data(game_id: str, game_data: Dict[str, Any], player_id: str) -> Optional[Dict[str, Any]]:
     """Parse game data from API response into database format.
     
     Args:
         game_id: The unique identifier for the game (format: YYYYMMDD_AWAY@HOME)
         game_data: Dictionary containing game statistics from the API
         player_id: The player's unique identifier
-        season: The season year (e.g., '2024')
     
     Returns:
         Optional[Dict[str, Any]]: Parsed game data dictionary or None if parsing fails
@@ -282,7 +277,6 @@ def parse_game_data(game_id: str, game_data: Dict[str, Any], player_id: str, sea
         return GameStats(
             player_id=player_id,
             game_id=game_id,
-            season=season,
             game_date=game_date,
             team=team,
             opponent=opponent,
@@ -324,7 +318,6 @@ def store_player_game_stats(stats_data: Dict[str, Any]) -> int:
         return 0
     
     player_id = stats_data["player_id"]
-    season = stats_data["season"]
     data = stats_data.get("data", {})
     existing_game_ids = stats_data.get("existing_game_ids", set())
     
@@ -347,7 +340,7 @@ def store_player_game_stats(stats_data: Dict[str, Any]) -> int:
             skipped_games_count += 1
             continue
             
-        parsed_game = parse_game_data(game_id, game_data, player_id, season)
+        parsed_game = parse_game_data(game_id, game_data, player_id)
         if parsed_game:
             parsed_games.append(parsed_game)
             new_games_count += 1
@@ -365,14 +358,14 @@ def store_player_game_stats(stats_data: Dict[str, Any]) -> int:
         for game in parsed_games:
             cursor.execute('''
             INSERT INTO player_game_stats 
-            (player_id, game_id, season, game_date, team, opponent, home, win, 
+            (player_id, game_id, game_date, team, opponent, home, win, 
             minutes, points, assists, rebounds, steals, blocks, turnovers, 
             three_pointers_made, field_goals_made, field_goals_attempted, 
             free_throws_made, free_throws_attempted, fantasy_points)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
-                game['player_id'], game['game_id'], game['season'], game['game_date'], 
-                game['team'], game['opponent'], game['home'], game['win'],
+                game['player_id'], game['game_id'], game['game_date'], game['team'], 
+                game['opponent'], game['home'], game['win'],
                 game['minutes'], game['points'], game['assists'], game['rebounds'], 
                 game['steals'], game['blocks'], game['turnovers'], 
                 game['three_pointers_made'], game['field_goals_made'], game['field_goals_attempted'],
@@ -388,26 +381,6 @@ def store_player_game_stats(stats_data: Dict[str, Any]) -> int:
         logging.error(f"Database error while storing game stats: {e}")
         conn.rollback()
         return 0
-    
-    finally:
-        conn.close()
-
-def get_existing_game_ids(player_id: str, season: str) -> set:
-    """Get existing game IDs for a player and season to avoid duplicates."""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    try:
-        cursor.execute(
-            "SELECT game_id FROM player_game_stats WHERE player_id = ? AND season = ?",
-            (player_id, season)
-        )
-        existing_game_ids = {row[0] for row in cursor.fetchall()}
-        return existing_game_ids
-    
-    except sqlite3.Error as e:
-        logging.error(f"Error fetching existing game IDs: {e}")
-        return set()
     
     finally:
         conn.close()
@@ -452,7 +425,6 @@ def main():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 player_id TEXT NOT NULL,
                 game_id TEXT NOT NULL,
-                season TEXT NOT NULL,
                 game_date TEXT NOT NULL,
                 team TEXT,
                 opponent TEXT,

@@ -1,0 +1,69 @@
+{
+  "statusCode": 200,
+  "body": [
+    {
+      "gameID": "20250224_POR@UTA",
+      "teamIDAway": "25",
+      "away": "POR",
+      "gameDate": "20250224",
+      "teamIDHome": "29",
+      "home": "UTA"
+    },
+    {
+      "gameID": "20250224_CHI@PHI",
+      "teamIDAway": "5",
+      "away": "CHI",
+      "gameDate": "20250224",
+      "teamIDHome": "23",
+      "home": "PHI"
+    },
+    {
+      "gameID": "20250224_DEN@IND",
+      "teamIDAway": "8",
+      "away": "DEN",
+      "gameDate": "20250224",
+      "teamIDHome": "12",
+      "home": "IND"
+    },
+    {
+      "gameID": "20250224_MIN@OKC",
+      "teamIDAway": "18",
+      "away": "MIN",
+      "gameDate": "20250224",
+      "teamIDHome": "21",
+      "home": "OKC"
+    },
+    {
+      "gameID": "20250224_LAC@DET",
+      "teamIDAway": "13",
+      "away": "LAC",
+      "gameDate": "20250224",
+      "teamIDHome": "9",
+      "home": "DET"
+    },
+    {
+      "gameID": "20250224_MIA@ATL",
+      "teamIDAway": "16",
+      "away": "MIA",
+      "gameDate": "20250224",
+      "teamIDHome": "1",
+      "home": "ATL"
+    },
+    {
+      "gameID": "20250224_CHA@SAC",
+      "teamIDAway": "4",
+      "away": "CHA",
+      "gameDate": "20250224",
+      "teamIDHome": "26",
+      "home": "SAC"
+    },
+    {
+      "gameID": "20250224_BKN@WAS",
+      "teamIDAway": "3",
+      "away": "BKN",
+      "gameDate": "20250224",
+      "teamIDHome": "30",
+      "home": "WAS"
+    }
+  ]
+}

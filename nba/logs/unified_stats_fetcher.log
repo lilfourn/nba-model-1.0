@@ -13048,3 +13048,9 @@
 2025-02-23 21:47:12,698 - ERROR - [unified_nba_stats.py:673] - No players found in database
 2025-02-23 21:47:28,691 - ERROR - [unified_nba_stats.py:649] - Error loading player IDs: no such column: player_id
 2025-02-23 21:47:28,691 - ERROR - [unified_nba_stats.py:673] - No players found in database
+2025-02-25 00:08:03,361 - INFO - Created directory: /Users/lukesmac/Models/nba/data
+2025-02-25 00:08:03,362 - INFO - Created directory: /Users/lukesmac/Models/nba/logs
+2025-02-25 00:08:03,362 - INFO - Created directory: /Users/lukesmac/Models/nba/dashboard_data
+2025-02-25 00:14:58,847 - INFO - Created directory: /Users/lukesmac/Models/nba/data
+2025-02-25 00:14:58,847 - INFO - Created directory: /Users/lukesmac/Models/nba/logs
+2025-02-25 00:14:58,847 - INFO - Created directory: /Users/lukesmac/Models/nba/dashboard_data

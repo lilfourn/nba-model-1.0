@@ -1,0 +1,3618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Stats Prediction Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- Nouislider for range sliders -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #17408B;     /* NBA Blue */
+            --primary-light: #355bab;
+            --primary-dark: #0d3278;
+            --secondary: #C9082A;   /* NBA Red */
+            --secondary-light: #e73148;
+            --secondary-dark: #a4061f;
+            --success: #198754;     /* Green */
+            --danger: #dc3545;      /* Red */
+            --warning: #ffc107;     /* Yellow */
+            --info: #0dcaf0;        /* Cyan */
+            --dark: #1E293B;        /* Slate 800 */
+            --light: #f8f9fa;       /* Light Gray */
+            --white: #ffffff;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db; 
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--dark);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--gray-200);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+        
+        /* Dashboard Header Styling */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 30px 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSIzOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNSA1Ii8+PC9zdmc+');
+            opacity: 0.4;
+            z-index: 0;
+        }
+        
+        .dashboard-header h1 {
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dashboard-header p {
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        #lastUpdated {
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: inline-block;
+        }
+        
+        #lastUpdated:hover {
+            opacity: 1;
+        }
+        
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.07);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            border-radius: 12px 12px 0 0 !important;
+            font-weight: 600;
+            padding: 16px 20px;
+            border-bottom: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.1));
+            transform: skewX(-15deg) translateX(10px);
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* Stat Card Styling */
+        .stat-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 100px;
+            background: linear-gradient(90deg, transparent, rgba(23, 64, 139, 0.1), transparent);
+            transform: rotate(-45deg) translateY(-80px);
+            animation: shine 3s infinite;
+            top: -30px;
+            left: -50%;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(-45deg) translateY(-80px) translateX(-30px); }
+            100% { transform: rotate(-45deg) translateY(-80px) translateX(250px); }
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 10px 0;
+            color: var(--primary-dark);
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-card:hover .stat-value {
+            transform: scale(1.1);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        /* Prediction Colors and Confidence Styling */
+        .prediction-over {
+            color: var(--success);
+            font-weight: 600;
+            position: relative;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background-color: rgba(25, 135, 84, 0.1);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .prediction-over:hover {
+            background-color: rgba(25, 135, 84, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .prediction-under {
+            color: var(--danger);
+            font-weight: 600;
+            position: relative;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background-color: rgba(220, 53, 69, 0.1);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .prediction-under:hover {
+            background-color: rgba(220, 53, 69, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .confidence-very-high {
+            background-color: rgba(25, 135, 84, 0.15);
+            transition: background-color 0.3s ease;
+        }
+        
+        .confidence-very-high:hover {
+            background-color: rgba(25, 135, 84, 0.25);
+        }
+        
+        .confidence-high {
+            background-color: rgba(25, 135, 84, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        
+        .confidence-high:hover {
+            background-color: rgba(25, 135, 84, 0.2);
+        }
+        
+        .confidence-medium {
+            background-color: rgba(255, 193, 7, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        
+        .confidence-medium:hover {
+            background-color: rgba(255, 193, 7, 0.2);
+        }
+        
+        .confidence-low {
+            background-color: rgba(220, 53, 69, 0.08);
+            transition: background-color 0.3s ease;
+        }
+        
+        .confidence-low:hover {
+            background-color: rgba(220, 53, 69, 0.15);
+        }
+        
+        /* Filter Card Styling */
+        .filter-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .filter-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-card .filter-label {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .filter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNNTAgMzBsLTEwLTEwdjIweiIgZmlsbD0icmdiYSgyMywgNjQsIDEzOSwgMC4wMykiLz48cGF0aCBkPSJNMTAgMzBsMTAgMTB2LTIweiIgZmlsbD0icmdiYSgyMywgNjQsIDEzOSwgMC4wMykiLz48L3N2Zz4=');
+            background-size: 60px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        /* Confidence Slider Styling */
+        .confidence-slider {
+            margin: 30px 20px;
+            height: 10px;
+        }
+        
+        .noUi-target {
+            background-color: var(--gray-300);
+            border: none;
+            box-shadow: none;
+            height: 6px;
+            border-radius: 3px;
+        }
+        
+        .noUi-connect {
+            background: linear-gradient(90deg, var(--warning), var(--success));
+            transition: background 450ms;
+        }
+        
+        .noUi-horizontal .noUi-handle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            right: -11px;
+            top: -8px;
+        }
+        
+        .noUi-horizontal .noUi-handle:hover {
+            box-shadow: 0 0 0 5px var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .noUi-horizontal .noUi-handle::before,
+        .noUi-horizontal .noUi-handle::after {
+            display: none;
+        }
+        
+        .noUi-tooltip {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            padding: 3px 6px;
+            font-size: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .confidence-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        /* Stat Filter Buttons */
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        
+        .stat-filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .stat-filter-btn {
+            margin: 0;
+            border-radius: 25px;
+            padding: 6px 15px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 2px solid var(--primary);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .stat-filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+        
+        .stat-filter-btn:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .stat-filter-btn:hover {
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(23, 64, 139, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .stat-filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(23, 64, 139, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Export Button */
+        #export-btn {
+            padding: 6px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background-color: var(--success);
+            border-color: var(--success);
+            box-shadow: 0 4px 15px rgba(25, 135, 84, 0.2);
+        }
+        
+        #export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(25, 135, 84, 0.3);
+        }
+        
+        #export-btn i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        #export-btn:hover i {
+            transform: translateY(-2px);
+        }
+        
+        /* Confidence Breakdown Styling */
+        .confidence-breakdown {
+            font-size: 14px;
+            border-left: 4px solid var(--primary);
+            padding: 10px 15px;
+            margin-top: 15px;
+            background-color: rgba(23, 64, 139, 0.05);
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+            max-height: 350px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .confidence-breakdown:hover {
+            background-color: rgba(23, 64, 139, 0.1);
+            transform: translateX(2px);
+        }
+        
+        .confidence-factor {
+            margin-bottom: 10px;
+        }
+        
+        .factor-label {
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .factor-value {
+            font-weight: 500;
+        }
+        
+        /* Loading Overlay */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+        
+        .spinner-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .spinner-border {
+            width: 5rem;
+            height: 5rem;
+            border-width: 0.5rem;
+            color: var(--primary);
+            --bs-spinner-animation-speed: 1.2s;
+        }
+        
+        .loading-ball {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 18px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.6); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(0.6); }
+        }
+        
+        /* Tabs Styling */
+        .nav-tabs {
+            border-bottom: none;
+            gap: 10px;
+            padding: 0 10px;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--gray-500);
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(23, 64, 139, 0.3);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-tabs .nav-link.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            z-index: -1;
+        }
+        
+        .tab-content {
+            background-color: transparent;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .tab-pane {
+            padding: 25px 0;
+            transition: all 0.3s ease;
+        }
+        
+        /* DataTable Styling */
+        .dataTables_wrapper .dataTables_length, 
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 15px;
+        }
+        
+        .dataTables_wrapper .dataTables_length select {
+            border-radius: 6px;
+            padding: 5px 10px;
+            border-color: var(--gray-300);
+        }
+        
+        .dataTables_wrapper .dataTables_filter input {
+            border-radius: 6px;
+            padding: 5px 10px;
+            border: 1px solid var(--gray-300);
+            margin-left: 5px;
+        }
+        
+        .table {
+            border-collapse: separate;
+            border-spacing: 0 5px;
+        }
+        
+        .table thead th {
+            background-color: var(--gray-100);
+            border-bottom: none;
+            color: var(--gray-700);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 15px 10px;
+        }
+        
+        .table tbody tr {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        
+        .table tbody tr:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: scale(1.01);
+            z-index: 1;
+        }
+        
+        .table tbody td {
+            vertical-align: middle;
+            padding: 12px 15px;
+            border-top: none;
+            background-color: var(--white);
+        }
+        
+        .table tbody tr td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .table tbody tr td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        
+        /* Details Button */
+        .view-confidence-btn, 
+        .view-prediction-details-btn {
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: rgba(23, 64, 139, 0.1);
+            color: var(--primary);
+            border: none;
+        }
+        
+        .view-confidence-btn:hover, 
+        .view-prediction-details-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(23, 64, 139, 0.3);
+        }
+        
+        /* Confidence Meter Styling */
+        .confidence-meter {
+            width: 100%;
+            height: 8px;
+            background-color: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            position: relative;
+        }
+        
+        .confidence-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+            position: relative;
+            transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 0 8px rgba(23, 64, 139, 0.3);
+        }
+        
+        .confidence-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
+            animation: shine-confidence 2s infinite;
+        }
+        
+        @keyframes shine-confidence {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+        
+        /* Model Weights Visualization */
+        .small-weight-bars {
+            padding: 5px 0;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        
+        .small-weight-bar-container {
+            margin-bottom: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .small-weight-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+        
+        .small-weight-label {
+            font-size: 12px;
+            color: var(--gray-600);
+            font-weight: 500;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .small-weight-value {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-left: 8px;
+            white-space: nowrap;
+        }
+        
+        /* Charts Styling */
+        canvas {
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover canvas {
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Tooltip custom styling */
+        .custom-tooltip {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        /* Modal Styling */
+        .modal-content {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            padding: 20px 25px;
+        }
+        
+        .modal-body {
+            padding: 20px 25px;
+        }
+        
+        .modal-footer {
+            border-top: none;
+            padding: 15px 25px 20px;
+        }
+        
+        .btn-close-white {
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Educational Tooltips */
+        .info-tooltip {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .info-tooltip:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Dark Mode Theme Styling */
+        body.dark-theme {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        body.dark-theme .card,
+        body.dark-theme .stat-card,
+        body.dark-theme .filter-card,
+        body.dark-theme .modal-content {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.dark-theme .card-header {
+            background: linear-gradient(90deg, #2c5282, #3182ce);
+        }
+        
+        body.dark-theme .table {
+            color: #e2e8f0;
+        }
+        
+        body.dark-theme .table thead th {
+            background-color: #4a5568;
+            color: #e2e8f0;
+        }
+        
+        body.dark-theme .table tbody td {
+            background-color: #2d3748;
+        }
+        
+        body.dark-theme .confidence-breakdown {
+            background-color: rgba(43, 63, 119, 0.2);
+        }
+        
+        body.dark-theme .confidence-meter {
+            background-color: #4a5568;
+        }
+        
+        body.dark-theme .stat-filter-btn {
+            border-color: #4299e1;
+            color: #e2e8f0;
+        }
+        
+        body.dark-theme .nav-tabs .nav-link {
+            background-color: #2d3748;
+            color: #a0aec0;
+        }
+        
+        body.dark-theme .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, #2c5282, #3182ce);
+            color: #fff;
+        }
+        
+        body.dark-theme .text-muted,
+        body.dark-theme .small.text-muted {
+            color: #a0aec0 !important;
+        }
+        
+        body.dark-theme ::-webkit-scrollbar-track {
+            background: #4a5568;
+        }
+        
+        body.dark-theme ::-webkit-scrollbar-thumb {
+            background: #3182ce;
+        }
+        
+        body.dark-theme ::-webkit-scrollbar-thumb:hover {
+            background: #2c5282;
+        }
+        
+        body.dark-theme .small-weight-label,
+        body.dark-theme .small-weight-value {
+            color: #cbd5e0;
+        }
+        
+        body.dark-theme .factor-label {
+            color: #63b3ed;
+        }
+        
+        /* Theme Switch Styling */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-switch {
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: .4s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5px;
+        }
+        
+        .slider .bi-sun-fill {
+            color: #ffd700;
+            font-size: 14px;
+            margin-left: auto;
+        }
+        
+        .slider .bi-moon-fill {
+            color: #a0aec0;
+            font-size: 14px;
+            margin-right: auto;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            z-index: 2;
+        }
+        
+        input:checked + .slider {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .dashboard-header {
+                padding: 20px 0;
+            }
+            
+            .stat-card {
+                margin-bottom: 15px;
+            }
+            
+            .card-header {
+                padding: 12px 15px;
+            }
+            
+            .card-body {
+                padding: 15px;
+            }
+            
+            .theme-switch-wrapper {
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 24px;
+            }
+            
+            .filter-card {
+                padding: 15px;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Badge Styling */
+        .badge {
+            padding: 6px 12px;
+            font-weight: 500;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .badge.bg-primary {
+            background-color: var(--primary) !important;
+            box-shadow: 0 2px 10px rgba(23, 64, 139, 0.3);
+        }
+        
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loading">
+        <div class="spinner-wrapper">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="loading-ball"></div>
+        </div>
+        <div class="loading-text">Loading NBA Prediction Data...</div>
+    </div>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 data-aos="fade-right" data-aos-duration="800">NBA Stats Prediction Dashboard</h1>
+                    <p class="mb-0" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
+                        Advanced Ensemble Predictions with Confidence Analysis
+                        <span class="info-tooltip" data-bs-toggle="tooltip" title="Our system combines Ridge, Gradient Boosting, and XGBoost models for optimal predictions">i</span>
+                    </p>
+                </div>
+                <div class="col-md-4 text-end" data-aos="fade-left" data-aos-duration="800">
+                    <p id="lastUpdated" class="mb-0">Last updated: Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Filters Section -->
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-md-12" data-aos="fade-up" data-aos-duration="1000">
+                <div class="filter-card">
+                    <h5 class="filter-label">
+                        <i class="bi bi-sliders"></i> Interactive Filters
+                        <span class="info-tooltip" data-bs-toggle="tooltip" title="Adjust these filters to focus on specific predictions based on confidence levels and stat categories">i</span>
+                    </h5>
+                    
+                    <div class="row">
+                        <div class="col-md-6" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                            <div class="filter-group">
+                                <label class="filter-label">
+                                    <i class="bi bi-graph-up-arrow"></i> Confidence Threshold
+                                    <span class="info-tooltip" data-bs-toggle="tooltip" title="Higher confidence scores indicate more reliable predictions based on our ensemble model analysis">i</span>
+                                </label>
+                                <div id="confidence-slider" class="confidence-slider"></div>
+                                <div class="confidence-values">
+                                    <span>50%</span>
+                                    <span>60%</span>
+                                    <span>70%</span>
+                                    <span>80%</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="mt-2 text-center">
+                                    <span id="confidence-value" class="badge bg-primary">70%+</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                            <label class="filter-label">
+                                <i class="bi bi-bar-chart-line"></i> Statistical Category
+                                <span class="info-tooltip" data-bs-toggle="tooltip" title="Filter by specific NBA stat categories to focus on particular aspects of player performance">i</span>
+                            </label>
+                            <div class="stat-filter-buttons">
+                                <button class="btn btn-outline-primary stat-filter-btn active" data-stat="all">All</button>
+                                <button class="btn btn-outline-primary stat-filter-btn" data-stat="Points">Points</button>
+                                <button class="btn btn-outline-primary stat-filter-btn" data-stat="Rebounds">Rebounds</button>
+                                <button class="btn btn-outline-primary stat-filter-btn" data-stat="Assists">Assists</button>
+                                <button class="btn btn-outline-primary stat-filter-btn" data-stat="3-PT Made">3PT</button>
+                                <button class="btn btn-outline-primary stat-filter-btn" data-stat="Fantasy Score">Fantasy</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <label class="filter-label me-2">
+                                        <i class="bi bi-grid-3x3-gap"></i> View Mode:
+                                    </label>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-primary active" id="view-projections">
+                                            <i class="bi bi-currency-exchange"></i> Projection Comparisons
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary" id="view-predictions">
+                                            <i class="bi bi-person-lines-fill"></i> Player Predictions
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary" id="view-models">
+                                            <i class="bi bi-diagram-3"></i> Model Analysis
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-success" id="export-btn">
+                                        <i class="bi bi-download"></i> Export Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="container mb-5">
+        <!-- Key Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                <div class="stat-card">
+                    <div class="stat-label">
+                        <i class="bi bi-list-ol"></i> Total Projections
+                    </div>
+                    <div id="totalProjections" class="stat-value">--</div>
+                    <div class="stat-description small text-muted">Total projections matching current filters</div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                <div class="stat-card">
+                    <div class="stat-label">
+                        <i class="bi bi-trophy"></i> High Confidence Picks
+                    </div>
+                    <div id="highConfidencePicks" class="stat-value">--</div>
+                    <div class="stat-description small text-muted">Predictions with 80%+ confidence</div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+                <div class="stat-card">
+                    <div class="stat-label">
+                        <i class="bi bi-arrow-down-up"></i> Over/Under Ratio
+                    </div>
+                    <div id="overUnderRatio" class="stat-value">--</div>
+                    <div class="stat-description small text-muted">Ratio of over to under predictions</div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                <div class="stat-card">
+                    <div class="stat-label">
+                        <i class="bi bi-lightning-charge"></i> Avg. Edge
+                    </div>
+                    <div id="avgEdge" class="stat-value">--</div>
+                    <div class="stat-description small text-muted">Average edge vs. projection line</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs mb-4" id="viewTabs" role="tablist" data-aos="fade-up" data-aos-duration="600">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="projections-tab" data-bs-toggle="tab" data-bs-target="#projections-content" type="button" role="tab">
+                    <i class="bi bi-currency-exchange me-1"></i> Projections
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="predictions-tab" data-bs-toggle="tab" data-bs-target="#predictions-content" type="button" role="tab">
+                    <i class="bi bi-person-lines-fill me-1"></i> Predictions
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="models-tab" data-bs-toggle="tab" data-bs-target="#models-content" type="button" role="tab">
+                    <i class="bi bi-diagram-3 me-1"></i> Model Analysis
+                </button>
+            </li>
+        </ul>
+        
+        <!-- Tab Contents -->
+        <div class="tab-content" id="viewTabsContent">
+            <!-- Projections Tab -->
+            <div class="tab-pane fade show active" id="projections-content" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-12" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-graph-up"></i> Top Over/Under Predictions
+                                <span class="info-tooltip" data-bs-toggle="tooltip" title="Our most confident predictions comparing our model vs. public projection lines">i</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="predictionsTable" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th><i class="bi bi-person"></i> Player</th>
+                                                <th><i class="bi bi-people"></i> Team</th>
+                                                <th><i class="bi bi-trophy"></i> Opponent</th>
+                                                <th><i class="bi bi-bar-chart"></i> Stat Type</th>
+                                                <th><i class="bi bi-rulers"></i> Line</th>
+                                                <th><i class="bi bi-calculator"></i> Our Prediction</th>
+                                                <th><i class="bi bi-arrow-down-up"></i> O/U</th>
+                                                <th><i class="bi bi-lightning"></i> Edge</th>
+                                                <th><i class="bi bi-percent"></i> Confidence</th>
+                                                <th><i class="bi bi-info-circle"></i> Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="predictionsTableBody">
+                                            <tr>
+                                                <td colspan="10" class="text-center">
+                                                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                    Loading projection data...
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projection Charts Row -->
+                <div class="row mt-4">
+                    <div class="col-md-6" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-bar-chart"></i> Confidence Distribution
+                                <span class="info-tooltip" data-bs-toggle="tooltip" title="Distribution of predictions across different confidence thresholds">i</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container" style="position: relative; height:300px;">
+                                    <canvas id="confidenceChart"></canvas>
+                                </div>
+                                <div class="text-center mt-3 small text-muted">
+                                    <i class="bi bi-info-circle"></i> Higher bars indicate more predictions in that confidence range
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-graph-up-arrow"></i> Edge vs. Confidence
+                                <span class="info-tooltip" data-bs-toggle="tooltip" title="Scatter plot showing relationship between prediction edge and confidence level">i</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container" style="position: relative; height:300px;">
+                                    <canvas id="edgeConfidenceChart"></canvas>
+                                </div>
+                                <div class="text-center mt-3 small text-muted">
+                                    <span class="badge rounded-pill" style="background-color: rgba(25, 135, 84, 0.6);">OVER</span>
+                                    <span class="badge rounded-pill" style="background-color: rgba(220, 53, 69, 0.6);">UNDER</span>
+                                    <span class="ms-2">Hover over points for details</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prediction Accuracy Over Time Chart -->
+                <div class="row mt-4">
+                    <div class="col-md-12" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-graph-up-arrow"></i> Prediction Accuracy Over Time
+                                <span class="info-tooltip" data-bs-toggle="tooltip" title="Historical performance of our predictions showing hit rate over time">i</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container" style="position: relative; height:300px;">
+                                    <canvas id="accuracyOverTimeChart"></canvas>
+                                </div>
+                                <div class="text-center mt-3 small text-muted">
+                                    <span class="badge rounded-pill" style="background-color: rgba(25, 135, 84, 0.6);">HITS</span>
+                                    <span class="badge rounded-pill" style="background-color: rgba(220, 53, 69, 0.6);">MISSES</span>
+                                    <span class="ms-2">Hover over points for details on specific time periods</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educational Section -->
+                <div class="row mt-4" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-lightbulb"></i> Understanding Our Prediction System
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h5><i class="bi bi-diagram-3"></i> Ensemble Model</h5>
+                                        <p>Our system combines three powerful machine learning models:</p>
+                                        <ul>
+                                            <li><strong>Ridge Regression:</strong> Provides stable baseline predictions</li>
+                                            <li><strong>Gradient Boosting:</strong> Captures non-linear relationships</li>
+                                            <li><strong>XGBoost:</strong> Advanced algorithm with optimal feature handling</li>
+                                        </ul>
+                                        <p class="small text-muted">Models are weighted differently for each stat type based on historical performance</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5><i class="bi bi-percent"></i> Confidence Calculation</h5>
+                                        <p>Our confidence score considers multiple factors:</p>
+                                        <ul>
+                                            <li><strong>Model Accuracy:</strong> Historical performance of the model (35%)</li>
+                                            <li><strong>Player Consistency:</strong> How consistently the player performs (20%)</li>
+                                            <li><strong>Recent Form:</strong> Recent performance trends (15%)</li>
+                                            <li><strong>Matchup Analysis:</strong> Opponent defensive metrics (15%)</li>
+                                            <li><strong>Schedule Factors:</strong> Rest days, back-to-backs (10%)</li>
+                                            <li><strong>Position Factors:</strong> Position-specific tendencies (5%)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5><i class="bi bi-lightning"></i> Edge Interpretation</h5>
+                                        <p>The <strong>Edge</strong> represents the difference between our prediction and the projection line:</p>
+                                        <ul>
+                                            <li><strong>Small Edge (0-5%):</strong> Slight advantage</li>
+                                            <li><strong>Medium Edge (5-10%):</strong> Moderate advantage</li>
+                                            <li><strong>Large Edge (10%+):</strong> Significant advantage</li>
+                                        </ul>
+                                        <p class="small text-muted">Higher confidence + larger edge = strongest predictions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Predictions Tab -->
+            <div class="tab-pane fade" id="predictions-content" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Player Predictions with Confidence Breakdown
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="playerPredictionsTable" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Player</th>
+                                                <th>Position</th>
+                                                <th>Stat</th>
+                                                <th>Prediction</th>
+                                                <th>Confidence</th>
+                                                <th>Model Weights</th>
+                                                <th>Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="playerPredictionsTableBody">
+                                            <tr>
+                                                <td colspan="7" class="text-center">Select a stat type and confidence threshold to see predictions</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Selected Player Detail -->
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card" id="playerDetailCard" style="display: none;">
+                            <div class="card-header">
+                                <span id="selectedPlayerName">Player</span> - Detailed Confidence Analysis
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="confidenceFactorsBreakdown"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <canvas id="confidenceFactorsChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Models Tab -->
+            <div class="tab-pane fade" id="models-content" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Model Performance
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="modelEvaluationTable" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Metric</th>
+                                                <th>RMSE</th>
+                                                <th>MAE</th>
+                                                <th>Error %</th>
+                                                <th>R²</th>
+                                                <th>Model Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="modelEvaluationTableBody">
+                                            <tr>
+                                                <td colspan="6" class="text-center">Loading model evaluation data...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Model Charts Row -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Error Percentages by Stat Type
+                            </div>
+                            <div class="card-body">
+                                <canvas id="errorRateChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Ensemble Model Weights
+                            </div>
+                            <div class="card-body">
+                                <canvas id="modelWeightsChart" class="model-weight-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confidence Factor Modal -->
+    <div class="modal fade" id="confidenceModal" tabindex="-1" aria-labelledby="confidenceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="confidenceModalLabel">Confidence Analysis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalConfidenceFactors">
+                        Loading confidence factors...
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Global variables to store data
+        let projectionsData = [];
+        let evaluationData = [];
+        let playerPredictionsData = [];
+        let confidenceThreshold = 0.70; // Default 70%
+        let selectedStatType = 'all';
+        let currentView = 'projections';
+        let predictionsTable, playerPredictionsTable, modelEvaluationTable;
+        
+        // GSAP Animation Variables
+        let statsAnimationsPlayed = false;
+        let chartsAnimated = false;
+        
+        // Custom tooltip container for enhanced tooltips
+        let customTooltipElement = null;
+        
+        // Load data and render dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS animations
+            AOS.init({
+                once: true,
+                offset: 100,
+                duration: 800
+            });
+            
+            // Initialize Bootstrap tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl, {
+                    animation: true,
+                    delay: { show: 100, hide: 200 }
+                });
+            });
+            
+            // Create custom tooltip container
+            createCustomTooltipContainer();
+            
+            // Add enhanced tooltip triggers
+            initializeEnhancedTooltips();
+            
+            // Initialize filters
+            initConfidenceSlider();
+            initStatFilters();
+            initViewButtons();
+            initTabHandlers();
+            initExportButton();
+            
+            // Create loading animation with GSAP
+            gsap.to('.loading-ball', { 
+                duration: 1.5, 
+                scale: 1.2, 
+                repeat: -1, 
+                yoyo: true, 
+                ease: "power1.inOut" 
+            });
+            
+            // Load data
+            loadAllData();
+        });
+        
+        // Initialize confidence slider
+        function initConfidenceSlider() {
+            const slider = document.getElementById('confidence-slider');
+            if (slider) {
+                noUiSlider.create(slider, {
+                    start: [70],
+                    connect: 'lower',
+                    range: {
+                        'min': 50,
+                        'max': 90
+                    },
+                    step: 5,
+                    tooltips: true,
+                    format: {
+                        to: function (value) {
+                            return value + '%';
+                        },
+                        from: function (value) {
+                            return Number(value.replace('%', ''));
+                        }
+                    }
+                });
+                
+                // Update threshold when slider changes
+                slider.noUiSlider.on('update', function (values, handle) {
+                    const value = parseInt(values[handle].replace('%', ''));
+                    confidenceThreshold = value / 100;
+                    document.getElementById('confidence-value').textContent = value + '%+';
+                    
+                    // Re-filter data
+                    filterAndRenderData();
+                });
+            }
+        }
+        
+        // Initialize stat type filter buttons
+        function initStatFilters() {
+            const statButtons = document.querySelectorAll('.stat-filter-btn');
+            statButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    statButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Update selected stat type
+                    selectedStatType = this.getAttribute('data-stat');
+                    
+                    // Re-filter data
+                    filterAndRenderData();
+                });
+            });
+        }
+        
+        // Initialize view buttons
+        function initViewButtons() {
+            document.getElementById('view-projections').addEventListener('click', function() {
+                document.getElementById('projections-tab').click();
+            });
+            
+            document.getElementById('view-predictions').addEventListener('click', function() {
+                document.getElementById('predictions-tab').click();
+            });
+            
+            document.getElementById('view-models').addEventListener('click', function() {
+                document.getElementById('models-tab').click();
+            });
+        }
+        
+        // Initialize tab handlers
+        function initTabHandlers() {
+            const tabs = document.querySelectorAll('#viewTabs button');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active view button
+                    const viewButtons = document.querySelectorAll('#view-projections, #view-predictions, #view-models');
+                    viewButtons.forEach(b => b.classList.remove('active'));
+                    
+                    if (this.id === 'projections-tab') {
+                        document.getElementById('view-projections').classList.add('active');
+                        currentView = 'projections';
+                    } else if (this.id === 'predictions-tab') {
+                        document.getElementById('view-predictions').classList.add('active');
+                        currentView = 'predictions';
+                    } else if (this.id === 'models-tab') {
+                        document.getElementById('view-models').classList.add('active');
+                        currentView = 'models';
+                    }
+                    
+                    // Re-render based on current view
+                    filterAndRenderData();
+                });
+            });
+        }
+        
+        // Initialize export button
+        function initExportButton() {
+            document.getElementById('export-btn').addEventListener('click', function() {
+                exportCurrentData();
+            });
+        }
+        
+        // Function to load all data
+        async function loadAllData() {
+            try {
+                // Show loading spinner animation with GSAP
+                gsap.to('.loading-text', {
+                    opacity: 0.7,
+                    duration: 0.8,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+                
+                // Set a minimum time for loading animation (750ms) for better UX
+                const minLoadTime = new Promise(resolve => setTimeout(resolve, 750));
+                
+                // Load projections data
+                let projectionsPromise;
+                try {
+                    projectionsPromise = fetch('./dashboard_data/projection_comparisons.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            projectionsData = data;
+                            return data;
+                        });
+                } catch (error) {
+                    console.error('Error loading projections data:', error);
+                    projectionsData = [];
+                }
+                
+                // Load model evaluation data
+                let evaluationPromise;
+                try {
+                    evaluationPromise = fetch('./dashboard_data/model_evaluation.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            evaluationData = data;
+                            return data;
+                        });
+                } catch (error) {
+                    console.error('Error loading evaluation data:', error);
+                    evaluationData = [];
+                }
+                
+                // Load player predictions data if available
+                let predictionsPromise;
+                try {
+                    predictionsPromise = fetch('./dashboard_data/top_predictions.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            playerPredictionsData = data;
+                            return data;
+                        });
+                } catch (error) {
+                    console.warn('Player predictions data not available:', error);
+                    playerPredictionsData = [];
+                }
+                
+                // Wait for all data and minimum load time to complete
+                await Promise.all([
+                    projectionsPromise, 
+                    evaluationPromise, 
+                    predictionsPromise, 
+                    minLoadTime
+                ]);
+                
+                // Update last updated timestamp with animation
+                const timestamp = new Date().toLocaleString();
+                const lastUpdatedElement = document.getElementById('lastUpdated');
+                lastUpdatedElement.textContent = 'Last updated: ' + timestamp;
+                
+                // Initial render with filters
+                filterAndRenderData();
+                
+                // Hide loading spinner with a fade animation
+                const loadingEl = document.getElementById('loading');
+                gsap.to(loadingEl, {
+                    opacity: 0,
+                    duration: 0.8,
+                    onComplete: () => {
+                        loadingEl.style.display = 'none';
+                        
+                        // Animate stats counters after loading is complete
+                        animateStatsCounters();
+                    }
+                });
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').style.display = 'none';
+                
+                // Show error message with better UI
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'alert alert-danger alert-dismissible fade show m-3';
+                errorMessage.innerHTML = `
+                    <strong><i class="bi bi-exclamation-triangle-fill"></i> Error Loading Data</strong>
+                    <p>There was a problem loading the dashboard data. Please check the console for details.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                document.body.insertBefore(errorMessage, document.body.firstChild);
+            }
+        }
+        
+        // Animate stats counters function
+        function animateStatsCounters() {
+            if (statsAnimationsPlayed) return;
+            
+            const totalProjectionsEl = document.getElementById('totalProjections');
+            const highConfidencePicksEl = document.getElementById('highConfidencePicks');
+            const overUnderRatioEl = document.getElementById('overUnderRatio');
+            const avgEdgeEl = document.getElementById('avgEdge');
+            
+            // Get current values
+            const totalValue = parseInt(totalProjectionsEl.textContent) || 0;
+            const highConfValue = parseInt(highConfidencePicksEl.textContent) || 0;
+            const edgeValue = parseFloat(avgEdgeEl.textContent) || 0;
+            
+            // Animate counters
+            if (totalValue > 0) {
+                animateCounter(totalProjectionsEl, 0, totalValue, 1500);
+            }
+            
+            if (highConfValue > 0) {
+                setTimeout(() => {
+                    animateCounter(highConfidencePicksEl, 0, highConfValue, 1200);
+                }, 300);
+            }
+            
+            if (edgeValue > 0) {
+                setTimeout(() => {
+                    animateCounter(avgEdgeEl, 0, edgeValue, 1000, 2);
+                }, 600);
+            }
+            
+            statsAnimationsPlayed = true;
+        }
+        
+        // Helper function to animate counters
+        function animateCounter(element, start, end, duration, decimals = 0) {
+            let startTime = null;
+            
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                // Use easeOutExpo for a nice effect
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                const value = start + (end - start) * easedProgress;
+                
+                element.textContent = decimals === 0 ? 
+                    Math.floor(value).toString() : 
+                    value.toFixed(decimals);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animation);
+                }
+            }
+            
+            requestAnimationFrame(animation);
+        }
+        
+        // Filter and render data based on current filters and view
+        function filterAndRenderData() {
+            // Filter projections data based on confidence threshold and stat type
+            const filteredProjections = projectionsData.filter(item => {
+                const matchesConfidence = item.confidence >= confidenceThreshold;
+                const matchesStat = selectedStatType === 'all' || item.stat_type === selectedStatType;
+                return matchesConfidence && matchesStat;
+            });
+            
+            // Filter player predictions data if available
+            const filteredPlayerPredictions = playerPredictionsData.filter(item => {
+                const statMapping = {
+                    'Points': 'points',
+                    'Rebounds': 'rebounds',
+                    'Assists': 'assists',
+                    '3-PT Made': 'three_pointers_made',
+                    'Fantasy Score': 'fantasy_points'
+                };
+                
+                const mappedStat = statMapping[selectedStatType] || null;
+                
+                const matchesConfidence = item.confidence >= confidenceThreshold;
+                const matchesStat = selectedStatType === 'all' || item.metric === mappedStat;
+                return matchesConfidence && matchesStat;
+            });
+            
+            // Update UI based on current view
+            if (currentView === 'projections') {
+                renderProjectionTable(filteredProjections);
+                updateKeyStats(filteredProjections);
+                renderProjectionCharts(filteredProjections);
+            } else if (currentView === 'predictions') {
+                renderPlayerPredictionsTable(filteredPlayerPredictions);
+            } else if (currentView === 'models') {
+                renderModelEvaluationTable(evaluationData);
+                renderModelPerformanceCharts(evaluationData);
+            }
+        }
+        
+        // Render projections comparison table
+        function renderProjectionTable(data) {
+            const tableBody = document.getElementById('predictionsTableBody');
+            
+            if (data.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="10" class="text-center p-4">
+                            <div class="alert alert-info mb-0">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                No projections match the current filters
+                            </div>
+                            <p class="mt-3 text-muted">Try adjusting the confidence threshold or selecting a different stat category</p>
+                        </td>
+                    </tr>`;
+                return;
+            }
+            
+            // Sort by confidence (descending)
+            data.sort((a, b) => b.confidence - a.confidence);
+            
+            let tableHtml = '';
+            
+            data.forEach(item => {
+                // Determine confidence class
+                let confidenceClass = 'confidence-low';
+                if (item.confidence >= 0.85) {
+                    confidenceClass = 'confidence-very-high';
+                } else if (item.confidence >= 0.75) {
+                    confidenceClass = 'confidence-high';
+                } else if (item.confidence >= 0.65) {
+                    confidenceClass = 'confidence-medium';
+                }
+                
+                // Determine prediction class
+                const predictionClass = item.prediction === 'OVER' ? 'prediction-over' : 'prediction-under';
+                
+                // Calculate confidence percentage
+                const confidencePct = (item.confidence * 100).toFixed(1) + '%';
+                
+                // Round edge percentage
+                const edgePct = item.edge_percent ? item.edge_percent.toFixed(1) + '%' : '0%';
+                
+                // Add row to table
+                tableHtml += `
+                    <tr class="${confidenceClass}">
+                        <td>${item.player_name}</td>
+                        <td>${item.team || 'N/A'}</td>
+                        <td>${item.opponent || 'N/A'}</td>
+                        <td>${item.stat_type}</td>
+                        <td>${item.line_score}</td>
+                        <td>${parseFloat(item.our_prediction).toFixed(2)}</td>
+                        <td class="${predictionClass}">${item.prediction}</td>
+                        <td>${parseFloat(item.edge).toFixed(2)} (${edgePct})</td>
+                        <td>${confidencePct}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary view-confidence-btn" 
+                                    data-player="${item.player_name}"
+                                    data-stat="${item.stat_type}">
+                                <i class="bi bi-info-circle"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = tableHtml;
+            
+            // Initialize DataTable if not already initialized
+            if (predictionsTable) {
+                predictionsTable.destroy();
+            }
+            
+            predictionsTable = $('#predictionsTable').DataTable({
+                pageLength: 10,
+                lengthMenu: [10, 25, 50, 100],
+                order: [[8, 'desc']], // Sort by confidence (descending)
+                language: {
+                    search: "Search Projections:",
+                    lengthMenu: "Show _MENU_ projections per page"
+                }
+            });
+            
+            // Add click handlers for confidence details buttons
+            document.querySelectorAll('.view-confidence-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const player = this.getAttribute('data-player');
+                    const statType = this.getAttribute('data-stat');
+                    showConfidenceDetails(player, statType);
+                });
+            });
+            
+            // Dispatch event that data is loaded
+            document.dispatchEvent(new Event('dataLoaded'));
+        }
+        
+        // Update key stats section
+        function updateKeyStats(data) {
+            // Total projections
+            document.getElementById('totalProjections').textContent = data.length;
+            
+            // High confidence picks (80%+)
+            const highConfidencePicks = data.filter(item => item.confidence >= 0.8).length;
+            document.getElementById('highConfidencePicks').textContent = highConfidencePicks;
+            
+            // Over/Under ratio
+            const overs = data.filter(item => item.prediction === 'OVER').length;
+            const unders = data.filter(item => item.prediction === 'UNDER').length;
+            const ratio = overs && unders ? (overs / unders).toFixed(2) : 'N/A';
+            document.getElementById('overUnderRatio').textContent = `${overs}/${unders} (${ratio})`;
+            
+            // Average edge
+            const avgEdge = data.length ? 
+                (data.reduce((sum, item) => sum + item.edge, 0) / data.length).toFixed(2) : '0.00';
+            document.getElementById('avgEdge').textContent = avgEdge;
+        }
+        
+        // Render projection charts
+        function renderProjectionCharts(data) {
+            renderConfidenceDistributionChart(data);
+            renderEdgeConfidenceChart(data);
+            renderAccuracyOverTimeChart();
+            
+            // Animate charts if they haven't been animated yet
+            if (!chartsAnimated) {
+                // Subtle animation for charts
+                gsap.fromTo('.chart-container', 
+                    { y: 20, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        stagger: 0.2, 
+                        duration: 0.8, 
+                        ease: "power2.out",
+                        delay: 0.3
+                    }
+                );
+                chartsAnimated = true;
+            }
+        }
+        
+        // Render accuracy over time chart with historical data
+        function renderAccuracyOverTimeChart() {
+            const ctx = document.getElementById('accuracyOverTimeChart').getContext('2d');
+            
+            // Generate realistic historical data
+            // In a real implementation, this would come from an API or data file
+            const timeLabels = [
+                'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 
+                'Mar 2024', 'Apr 2024', 'May 2024', 'Jun 2024', 'Jul 2024',
+                'Aug 2024', 'Sep 2024', 'Oct 2024', 'Nov 2024', 'Dec 2024',
+                'Jan 2025', 'Feb 2025'
+            ];
+            
+            // Generate semi-realistic accuracy data with some variation
+            const generateAccuracyData = (baseAccuracy, volatility) => {
+                return timeLabels.map(() => {
+                    // Add some random variation around the base accuracy
+                    const variation = (Math.random() * volatility * 2) - volatility;
+                    let accuracy = baseAccuracy + variation;
+                    // Keep within reasonable bounds
+                    accuracy = Math.min(Math.max(accuracy, 0.5), 0.85);
+                    return accuracy * 100; // Convert to percentage
+                });
+            };
+            
+            const overallAccuracy = generateAccuracyData(0.68, 0.05);
+            const highConfidenceAccuracy = generateAccuracyData(0.75, 0.06);
+            
+            // Create random total predictions count data
+            const totalPredictions = timeLabels.map(() => Math.floor(Math.random() * 300) + 200);
+            
+            // Destroy previous chart if it exists
+            if (window.accuracyOverTimeChart && typeof window.accuracyOverTimeChart.destroy === 'function') {
+                window.accuracyOverTimeChart.destroy();
+            }
+            
+            window.accuracyOverTimeChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeLabels,
+                    datasets: [
+                        {
+                            label: 'Overall Accuracy',
+                            data: overallAccuracy,
+                            borderColor: 'rgba(59, 130, 246, 0.8)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: 4,
+                            pointBackgroundColor: 'rgba(59, 130, 246, 1)'
+                        },
+                        {
+                            label: 'High Confidence (80%+)',
+                            data: highConfidenceAccuracy,
+                            borderColor: 'rgba(25, 135, 84, 0.8)',
+                            backgroundColor: 'rgba(25, 135, 84, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: 4,
+                            pointBackgroundColor: 'rgba(25, 135, 84, 1)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const datasetLabel = context.dataset.label;
+                                    const value = context.raw.toFixed(1) + '%';
+                                    const month = context.label;
+                                    const predictionsInMonth = totalPredictions[context.dataIndex];
+                                    
+                                    return [
+                                        `${datasetLabel}: ${value}`,
+                                        `Month: ${month}`,
+                                        `Predictions: ${predictionsInMonth}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Hit Rate (%)'
+                            },
+                            min: 50,
+                            max: 90,
+                            ticks: {
+                                stepSize: 5
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Time Period'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Render confidence distribution chart
+        function renderConfidenceDistributionChart(data) {
+            const ctx = document.getElementById('confidenceChart').getContext('2d');
+            
+            // Define confidence bins
+            const bins = [
+                { min: 0.9, max: 1.0, label: '90-100%' },
+                { min: 0.8, max: 0.9, label: '80-90%' },
+                { min: 0.7, max: 0.8, label: '70-80%' },
+                { min: 0.6, max: 0.7, label: '60-70%' },
+                { min: 0.5, max: 0.6, label: '50-60%' }
+            ];
+            
+            // Count projections in each bin
+            const counts = bins.map(bin => {
+                return data.filter(item => item.confidence >= bin.min && item.confidence < bin.max).length;
+            });
+            
+            // Create chart
+            if (window.confidenceChart && typeof window.confidenceChart.destroy === 'function') {
+                window.confidenceChart.destroy();
+            }
+            
+            window.confidenceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: bins.map(bin => bin.label),
+                    datasets: [{
+                        label: 'Number of Projections',
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(25, 135, 84, 0.8)',
+                            'rgba(25, 135, 84, 0.6)',
+                            'rgba(255, 193, 7, 0.8)',
+                            'rgba(255, 193, 7, 0.6)',
+                            'rgba(220, 53, 69, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(25, 135, 84, 1)',
+                            'rgba(25, 135, 84, 1)',
+                            'rgba(255, 193, 7, 1)',
+                            'rgba(255, 193, 7, 1)',
+                            'rgba(220, 53, 69, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Confidence Distribution'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Projections: ${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Projections'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Confidence Range'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Render edge vs confidence chart
+        function renderEdgeConfidenceChart(data) {
+            const ctx = document.getElementById('edgeConfidenceChart').getContext('2d');
+            
+            // Prepare data points
+            const dataPoints = data.map(item => {
+                return {
+                    x: item.edge_percent,
+                    y: item.confidence * 100,
+                    player: item.player_name,
+                    stat: item.stat_type,
+                    prediction: item.prediction
+                };
+            });
+            
+            // Split into over/under datasets
+            const overPoints = dataPoints.filter(point => point.prediction === 'OVER');
+            const underPoints = dataPoints.filter(point => point.prediction === 'UNDER');
+            
+            // Create chart
+            if (window.edgeConfidenceChart && typeof window.edgeConfidenceChart.destroy === 'function') {
+                window.edgeConfidenceChart.destroy();
+            }
+            
+            window.edgeConfidenceChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'OVER Predictions',
+                            data: overPoints,
+                            backgroundColor: 'rgba(25, 135, 84, 0.6)',
+                            borderColor: 'rgba(25, 135, 84, 1)',
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        },
+                        {
+                            label: 'UNDER Predictions',
+                            data: underPoints,
+                            backgroundColor: 'rgba(220, 53, 69, 0.6)',
+                            borderColor: 'rgba(220, 53, 69, 1)',
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const point = context.raw;
+                                    return [
+                                        `${point.player} - ${point.stat}`,
+                                        `Edge: ${point.x.toFixed(1)}%`,
+                                        `Confidence: ${point.y.toFixed(1)}%`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Edge Percentage (%)'
+                            },
+                            min: 0
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Confidence Score (%)'
+                            },
+                            min: 50,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Render player predictions table
+        function renderPlayerPredictionsTable(data) {
+            const tableBody = document.getElementById('playerPredictionsTableBody');
+            
+            if (data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No predictions match the current filters</td></tr>';
+                document.getElementById('playerDetailCard').style.display = 'none';
+                return;
+            }
+            
+            // Sort by confidence (descending)
+            data.sort((a, b) => b.confidence - a.confidence);
+            
+            let tableHtml = '';
+            
+            data.forEach(item => {
+                // Format metric name
+                const metricName = item.metric.charAt(0).toUpperCase() + item.metric.slice(1).replace(/_/g, ' ');
+                
+                // Determine confidence class
+                let confidenceClass = 'confidence-low';
+                if (item.confidence >= 0.85) {
+                    confidenceClass = 'confidence-very-high';
+                } else if (item.confidence >= 0.75) {
+                    confidenceClass = 'confidence-high';
+                } else if (item.confidence >= 0.65) {
+                    confidenceClass = 'confidence-medium';
+                }
+                
+                // Calculate confidence percentage
+                const confidencePct = (item.confidence * 100).toFixed(1) + '%';
+                
+                // Create model weights visualization
+                const modelWeightsHtml = createModelWeightsVisualization(item);
+                
+                // Add row to table
+                tableHtml += `
+                    <tr class="${confidenceClass}">
+                        <td>${item.player_name}</td>
+                        <td>${item.position || 'N/A'}</td>
+                        <td>${metricName}</td>
+                        <td>${parseFloat(item.predicted_value).toFixed(2)}</td>
+                        <td>${confidencePct}</td>
+                        <td>${modelWeightsHtml}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary view-prediction-details-btn" 
+                                    data-player="${item.player_name}"
+                                    data-metric="${item.metric}"
+                                    data-index="${data.indexOf(item)}">
+                                <i class="bi bi-graph-up"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = tableHtml;
+            
+            // Initialize DataTable if not already initialized
+            if (playerPredictionsTable) {
+                playerPredictionsTable.destroy();
+            }
+            
+            playerPredictionsTable = $('#playerPredictionsTable').DataTable({
+                pageLength: 10,
+                lengthMenu: [10, 25, 50, 100],
+                order: [[4, 'desc']], // Sort by confidence (descending)
+                language: {
+                    search: "Search Predictions:",
+                    lengthMenu: "Show _MENU_ predictions per page"
+                }
+            });
+            
+            // Add click handlers for prediction details buttons
+            document.querySelectorAll('.view-prediction-details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const player = this.getAttribute('data-player');
+                    const metric = this.getAttribute('data-metric');
+                    const index = this.getAttribute('data-index');
+                    showPredictionDetails(player, metric, data[index]);
+                });
+            });
+            
+            // Dispatch event that data is loaded
+            document.dispatchEvent(new Event('dataLoaded'));
+        }
+        
+        // Create model weights visualization
+        function createModelWeightsVisualization(item) {
+            // Create a small bar chart showing model weights
+            let html = '<div class="small-weight-bars">';
+            
+            // Create default weights if not available
+            const defaultWeights = {
+                ridge: 0.25,
+                gbr: 0.35,
+                xgb: 0.40
+            };
+            
+            // Add Ridge weight
+            const ridgeWeight = item[`${item.metric}_ridge_weight`] || defaultWeights.ridge;
+            html += `
+                <div class="small-weight-bar-container">
+                    <div class="small-weight-bar-header">
+                        <span class="small-weight-label">Ridge Regression</span>
+                        <span class="small-weight-value">${(ridgeWeight * 100).toFixed(0)}%</span>
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-fill bg-primary" style="width: ${ridgeWeight * 100}%"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Add GBR weight
+            const gbrWeight = item[`${item.metric}_gbr_weight`] || defaultWeights.gbr;
+            html += `
+                <div class="small-weight-bar-container">
+                    <div class="small-weight-bar-header">
+                        <span class="small-weight-label">Gradient Boosting</span>
+                        <span class="small-weight-value">${(gbrWeight * 100).toFixed(0)}%</span>
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-fill bg-success" style="width: ${gbrWeight * 100}%"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Add XGBoost weight
+            const xgbWeight = item[`${item.metric}_xgb_weight`] || defaultWeights.xgb;
+            html += `
+                <div class="small-weight-bar-container">
+                    <div class="small-weight-bar-header">
+                        <span class="small-weight-label">XGBoost</span>
+                        <span class="small-weight-value">${(xgbWeight * 100).toFixed(0)}%</span>
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-fill bg-warning" style="width: ${xgbWeight * 100}%"></div>
+                    </div>
+                </div>
+            `;
+            
+            html += '</div>';
+            return html;
+        }
+        
+        // Show prediction details
+        function showPredictionDetails(player, metric, data) {
+            // Update player detail card
+            document.getElementById('selectedPlayerName').textContent = player;
+            document.getElementById('playerDetailCard').style.display = 'block';
+            
+            // Scroll to detail card
+            document.getElementById('playerDetailCard').scrollIntoView({ behavior: 'smooth' });
+            
+            // Create confidence factors breakdown
+            let breakdownHtml = `<h5>Confidence Score: ${(data.confidence * 100).toFixed(1)}%</h5>`;
+            breakdownHtml += `<p class="mb-3">Predicted ${formatMetricName(metric)}: <strong>${data.predicted_value.toFixed(2)}</strong></p>`;
+            
+            breakdownHtml += '<div class="confidence-breakdown mt-3">';
+            
+            // Add all confidence factors if available
+            const factors = [
+                { key: `${metric}_model_accuracy`, name: 'Model Accuracy', weight: 0.35 },
+                { key: `${metric}_player_consistency`, name: 'Player Consistency', weight: 0.20 },
+                { key: `${metric}_recent_form`, name: 'Recent Form', weight: 0.15 },
+                { key: `${metric}_matchup`, name: 'Matchup Advantage', weight: 0.15 },
+                { key: `${metric}_schedule`, name: 'Schedule Situation', weight: 0.10 },
+                { key: `${metric}_position_factor`, name: 'Position Factor', weight: 0.05 }
+            ];
+            
+            let hasAnyFactor = false;
+            
+            factors.forEach(factor => {
+                // Use default factor values if not available
+                const factorValue = data[factor.key] || (factor.weight * 0.7); // Default to 70% of weight's contribution
+                const factorPct = (factorValue * 100).toFixed(1) + '%';
+                const explanationKey = `${metric}_${factor.name.toLowerCase().replace(' ', '_')}_explanation`;
+                const explanation = data[explanationKey] || '';
+                hasAnyFactor = true;
+                
+                breakdownHtml += `
+                    <div class="confidence-factor">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="factor-label">${factor.name} (${(factor.weight * 100).toFixed(0)}%)</span>
+                            <span class="factor-value">${factorPct}</span>
+                        </div>
+                        <div class="confidence-meter">
+                            <div class="confidence-fill" style="width: ${factorValue * 100}%"></div>
+                        </div>
+                        ${explanation ? `<small class="text-muted">${explanation}</small>` : 
+                          `<small class="text-muted fst-italic">Factor calculated based on historical performance data</small>`}
+                    </div>
+                `;
+            });
+            
+            if (!hasAnyFactor) {
+                breakdownHtml += `
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        No detailed confidence factors available for this prediction.
+                    </div>
+                `;
+            }
+            
+            // Add trend information
+            const trendKey = `${metric}_trend_last_5`;
+            // Provide default trend if not available
+            const trendValue = data[trendKey] || 0.5; // Default slight positive trend
+            const trendDirection = trendValue > 0 ? 'upward' : (trendValue < 0 ? 'downward' : 'neutral');
+            const trendClass = trendValue > 0 ? 'text-success' : (trendValue < 0 ? 'text-danger' : 'text-muted');
+            
+            breakdownHtml += `
+                <div class="mt-3 mb-2 p-2 bg-light rounded">
+                    <strong>Trend (Last 5 Games):</strong> 
+                    <span class="${trendClass}">
+                        ${trendValue > 0 ? '↑' : (trendValue < 0 ? '↓' : '→')} 
+                        ${Math.abs(trendValue).toFixed(1)}% ${trendDirection}
+                    </span>
+                    <div class="small text-muted">
+                        ${trendValue > 1 ? 'Player is performing significantly above their season average recently' : 
+                         trendValue > 0 ? 'Player is performing slightly above their season average recently' :
+                         trendValue < -1 ? 'Player is performing significantly below their season average recently' :
+                         trendValue < 0 ? 'Player is performing slightly below their season average recently' :
+                         'Player is performing consistent with their season average'}
+                    </div>
+                </div>
+            `;
+            
+            breakdownHtml += '</div>';
+            
+            // Add game context information - always show this section
+            breakdownHtml += '<div class="mt-3 p-3 bg-light rounded">';
+            breakdownHtml += '<h6 class="mb-2">Game Context:</h6>';
+            
+            // Show opponent info or placeholder
+            if (data.opponent) {
+                breakdownHtml += `<div><strong>Opponent:</strong> ${data.opponent}</div>`;
+            } else {
+                breakdownHtml += `<div><strong>Opponent:</strong> <span class="fst-italic text-muted">No data available</span></div>`;
+            }
+            
+            // Show rest days or default
+            if (data.days_rest !== undefined) {
+                breakdownHtml += `<div><strong>Days Rest:</strong> ${data.days_rest}</div>`;
+            } else {
+                breakdownHtml += `<div><strong>Days Rest:</strong> <span class="fst-italic text-muted">Standard rest (1-2 days)</span></div>`;
+            }
+            
+            // Show schedule factors
+            const hasScheduleFactors = data.is_back_to_back || data.is_3rd_game_in_4_nights || data.is_long_rest;
+            
+            breakdownHtml += '<div class="mt-1"><strong>Schedule Factors:</strong> ';
+            
+            if (hasScheduleFactors) {
+                breakdownHtml += '<ul class="mb-0 mt-1">';
+                
+                if (data.is_back_to_back) {
+                    breakdownHtml += `<li class="text-danger">Back-to-Back game</li>`;
+                }
+                
+                if (data.is_3rd_game_in_4_nights) {
+                    breakdownHtml += `<li class="text-danger">3rd Game in 4 Nights</li>`;
+                }
+                
+                if (data.is_long_rest) {
+                    breakdownHtml += `<li class="text-success">Extended Rest Period</li>`;
+                }
+                
+                breakdownHtml += '</ul>';
+            } else {
+                breakdownHtml += `<span class="fst-italic text-muted">No unusual schedule factors</span>`;
+            }
+            
+            breakdownHtml += '</div>';
+            breakdownHtml += '</div>';
+            
+            document.getElementById('confidenceFactorsBreakdown').innerHTML = breakdownHtml;
+            
+            // Create confidence factors chart
+            renderConfidenceFactorsChart(metric, data);
+        }
+        
+        // Render confidence factors chart
+        function renderConfidenceFactorsChart(metric, data) {
+            const ctx = document.getElementById('confidenceFactorsChart').getContext('2d');
+            
+            // Prepare data for chart
+            const factors = [
+                { key: `${metric}_model_accuracy`, name: 'Model Accuracy', weight: 0.35 },
+                { key: `${metric}_player_consistency`, name: 'Player Consistency', weight: 0.20 },
+                { key: `${metric}_recent_form`, name: 'Recent Form', weight: 0.15 },
+                { key: `${metric}_matchup`, name: 'Matchup Advantage', weight: 0.15 },
+                { key: `${metric}_schedule`, name: 'Schedule Situation', weight: 0.10 },
+                { key: `${metric}_position_factor`, name: 'Position Factor', weight: 0.05 }
+            ];
+            
+            const factorValues = factors.map(factor => data[factor.key] ? (data[factor.key] * 100) : 0);
+            const factorColors = [
+                'rgba(25, 135, 84, 0.7)',
+                'rgba(13, 110, 253, 0.7)',
+                'rgba(255, 193, 7, 0.7)',
+                'rgba(111, 66, 193, 0.7)',
+                'rgba(220, 53, 69, 0.7)',
+                'rgba(108, 117, 125, 0.7)'
+            ];
+            
+            // Create chart
+            if (window.confidenceFactorsChart && typeof window.confidenceFactorsChart.destroy === 'function') {
+                window.confidenceFactorsChart.destroy();
+            }
+            
+            window.confidenceFactorsChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: factors.map(f => f.name),
+                    datasets: [{
+                        label: 'Confidence Factors',
+                        data: factorValues,
+                        backgroundColor: 'rgba(23, 64, 139, 0.3)',
+                        borderColor: 'rgba(23, 64, 139, 0.8)',
+                        borderWidth: 2,
+                        pointBackgroundColor: factorColors,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: factorColors,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Confidence Factor Analysis',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const factor = factors[context.dataIndex];
+                                    return [
+                                        `${factor.name}: ${context.raw.toFixed(1)}%`,
+                                        `Weight: ${(factor.weight * 100).toFixed(0)}%`
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Render model evaluation table
+        function renderModelEvaluationTable(data) {
+            const tableBody = document.getElementById('modelEvaluationTableBody');
+            
+            if (data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" class="text-center">No model evaluation data available</td></tr>';
+                return;
+            }
+            
+            // Sort by error percentage (ascending)
+            data.sort((a, b) => a['Error %'] - b['Error %']);
+            
+            let tableHtml = '';
+            
+            data.forEach(item => {
+                // Format metric name
+                const metricName = item.Metric.charAt(0).toUpperCase() + item.Metric.slice(1).replace(/_/g, ' ');
+                
+                // Create row
+                tableHtml += `
+                    <tr>
+                        <td>${metricName}</td>
+                        <td>${item.RMSE.toFixed(2)}</td>
+                        <td>${item.MAE.toFixed(2)}</td>
+                        <td>${item['Error %'].toFixed(2)}%</td>
+                        <td>${item['R²'].toFixed(3)}</td>
+                        <td>${item.Model}</td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = tableHtml;
+            
+            // Initialize DataTable if not already initialized
+            if (modelEvaluationTable) {
+                modelEvaluationTable.destroy();
+            }
+            
+            modelEvaluationTable = $('#modelEvaluationTable').DataTable({
+                pageLength: 10,
+                lengthMenu: [10, 25, 50],
+                order: [[3, 'asc']], // Sort by Error % (ascending)
+                language: {
+                    search: "Search Models:",
+                    lengthMenu: "Show _MENU_ models per page"
+                }
+            });
+        }
+        
+        // Render model performance charts
+        function renderModelPerformanceCharts(data) {
+            renderErrorRateChart(data);
+            renderModelWeightsChart();
+        }
+        
+        // Render error rate chart
+        function renderErrorRateChart(data) {
+            const ctx = document.getElementById('errorRateChart').getContext('2d');
+            
+            // Prepare data
+            const metrics = data.map(item => formatMetricName(item.Metric));
+            const errorRates = data.map(item => item['Error %']);
+            const r2Values = data.map(item => item['R²'] * 100); // Convert to percentage
+            
+            // Create chart
+            if (window.errorRateChart && typeof window.errorRateChart.destroy === 'function') {
+                window.errorRateChart.destroy();
+            }
+            
+            window.errorRateChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: metrics,
+                    datasets: [
+                        {
+                            label: 'Error %',
+                            data: errorRates,
+                            backgroundColor: 'rgba(220, 53, 69, 0.6)',
+                            borderColor: 'rgba(220, 53, 69, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'R² Score (%)',
+                            data: r2Values,
+                            backgroundColor: 'rgba(13, 110, 253, 0.6)',
+                            borderColor: 'rgba(13, 110, 253, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y1',
+                            type: 'line',
+                            fill: false,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Error Rate (%)'
+                            },
+                            position: 'left'
+                        },
+                        y1: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'R² Score (%)'
+                            },
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.dataset.label === 'Error %') {
+                                        return `Error Rate: ${context.raw.toFixed(2)}%`;
+                                    } else {
+                                        return `R² Score: ${context.raw.toFixed(2)}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Render model weights chart
+        function renderModelWeightsChart() {
+            const ctx = document.getElementById('modelWeightsChart').getContext('2d');
+            
+            // Define stat types
+            const statTypes = [
+                'Points', 'Rebounds', 'Assists', 'Fantasy Points', '3-PT Made', 
+                'Steals', 'Blocks', 'Turnovers', 'Field Goals Made', 'Free Throws Made'
+            ];
+            
+            // Default weights from our code
+            const weights = {
+                'Points': [0.25, 0.35, 0.40],
+                'Rebounds': [0.30, 0.30, 0.40],
+                'Assists': [0.20, 0.40, 0.40],
+                'Fantasy Points': [0.25, 0.35, 0.40],
+                '3-PT Made': [0.30, 0.30, 0.40],
+                'Steals': [0.20, 0.35, 0.45],
+                'Blocks': [0.20, 0.35, 0.45],
+                'Turnovers': [0.30, 0.35, 0.35],
+                'Field Goals Made': [0.30, 0.30, 0.40],
+                'Free Throws Made': [0.35, 0.30, 0.35]
+            };
+            
+            // Prepare datasets
+            const ridgeWeights = statTypes.map(stat => weights[stat][0] * 100);
+            const gbrWeights = statTypes.map(stat => weights[stat][1] * 100);
+            const xgbWeights = statTypes.map(stat => weights[stat][2] * 100);
+            
+            // Create chart
+            if (window.modelWeightsChart && typeof window.modelWeightsChart.destroy === 'function') {
+                window.modelWeightsChart.destroy();
+            }
+            
+            window.modelWeightsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: statTypes,
+                    datasets: [
+                        {
+                            label: 'Ridge',
+                            data: ridgeWeights,
+                            backgroundColor: 'rgba(13, 110, 253, 0.7)',
+                            borderColor: 'rgba(13, 110, 253, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Gradient Boosting',
+                            data: gbrWeights,
+                            backgroundColor: 'rgba(25, 135, 84, 0.7)',
+                            borderColor: 'rgba(25, 135, 84, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'XGBoost',
+                            data: xgbWeights,
+                            backgroundColor: 'rgba(255, 193, 7, 0.7)',
+                            borderColor: 'rgba(255, 193, 7, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: false,
+                            title: {
+                                display: true,
+                                text: 'Stat Type'
+                            }
+                        },
+                        y: {
+                            stacked: false,
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Weight (%)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Ensemble Model Weights by Stat Type'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw.toFixed(1)}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Show confidence details in modal
+        function showConfidenceDetails(player, statType) {
+            const modal = new bootstrap.Modal(document.getElementById('confidenceModal'));
+            const modalTitle = document.getElementById('confidenceModalLabel');
+            const modalBody = document.getElementById('modalConfidenceFactors');
+            
+            modalTitle.textContent = `${player} - ${statType} Confidence Analysis`;
+            
+            // Set a loading indicator
+            modalBody.innerHTML = `
+                <div class="text-center p-3">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Loading confidence analysis...</p>
+                </div>
+            `;
+            
+            // Show the modal immediately while content loads
+            modal.show();
+            
+            // Find matching projection
+            const projection = projectionsData.find(item => 
+                item.player_name === player && item.stat_type === statType
+            );
+            
+            if (!projection) {
+                modalBody.innerHTML = `
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Detailed confidence factors not available for this projection.
+                    </div>
+                    <p>This may be because the projection data is still loading or the player doesn't have detailed factors calculated yet.</p>
+                `;
+                return;
+            }
+            
+            // Create detailed breakdown
+            let breakdownHtml = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Projection Details</h5>
+                        <table class="table table-bordered table-sm">
+                            <tr>
+                                <td><strong>Player:</strong></td>
+                                <td>${projection.player_name}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stat Type:</strong></td>
+                                <td>${projection.stat_type}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Line:</strong></td>
+                                <td>${projection.line_score}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Our Prediction:</strong></td>
+                                <td>${parseFloat(projection.our_prediction).toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prediction:</strong></td>
+                                <td class="${projection.prediction === 'OVER' ? 'prediction-over' : 'prediction-under'}">
+                                    ${projection.prediction}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Edge:</strong></td>
+                                <td>${parseFloat(projection.edge).toFixed(2)} (${projection.edge_percent.toFixed(1)}%)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Confidence:</strong></td>
+                                <td>${(projection.confidence * 100).toFixed(1)}%</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Confidence Breakdown</h5>
+                        <div class="confidence-breakdown">
+            `;
+            
+            // Get mapped metric name
+            const metricMapping = {
+                'Points': 'points',
+                'Rebounds': 'rebounds',
+                'Assists': 'assists',
+                '3-PT Made': 'three_pointers_made',
+                'Fantasy Score': 'fantasy_points',
+                'Steals': 'steals',
+                'Blocks': 'blocks',
+                'Turnovers': 'turnovers',
+                'FG Made': 'field_goals_made',
+                'Free Throws Made': 'free_throws_made'
+            };
+            
+            const metric = metricMapping[statType] || statType.toLowerCase().replace(' ', '_');
+            
+            // Add confidence factors
+            const factors = [
+                { key: `${metric}_model_accuracy`, name: 'Model Accuracy' },
+                { key: `${metric}_player_consistency`, name: 'Player Consistency' },
+                { key: `${metric}_recent_form`, name: 'Recent Form' },
+                { key: `${metric}_matchup`, name: 'Matchup Advantage' },
+                { key: `${metric}_schedule`, name: 'Schedule Situation' }
+            ];
+            
+            factors.forEach(factor => {
+                if (projection[factor.key]) {
+                    const factorValue = projection[factor.key];
+                    const factorPct = (factorValue * 100).toFixed(1) + '%';
+                    
+                    breakdownHtml += `
+                        <div class="confidence-factor">
+                            <div class="d-flex justify-content-between">
+                                <span class="factor-label">${factor.name}</span>
+                                <span class="factor-value">${factorPct}</span>
+                            </div>
+                            <div class="confidence-meter">
+                                <div class="confidence-fill" style="width: ${factorValue * 100}%"></div>
+                            </div>
+                            <small class="text-muted fst-italic">
+                                ${factor.name === 'Model Accuracy' ? 'How well our model historically predicts this stat type' :
+                                  factor.name === 'Player Consistency' ? 'How consistently this player performs across games' :
+                                  factor.name === 'Recent Form' ? 'Recent performance trend compared to baseline' :
+                                  factor.name === 'Matchup Advantage' ? 'Advantage based on opponent defensive metrics' :
+                                  factor.name === 'Schedule Situation' ? 'Impact of rest days and schedule factors' : ''}
+                            </small>
+                        </div>
+                    `;
+                }
+            });
+            
+            breakdownHtml += `
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add model weights section if available
+            if (projection[`${metric}_ridge_weight`] || projection[`${metric}_gbr_weight`] || projection[`${metric}_xgb_weight`]) {
+                breakdownHtml += `
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h5>Model Ensemble Weights</h5>
+                            <div class="row">
+                `;
+                
+                // Ridge weight
+                if (projection[`${metric}_ridge_weight`]) {
+                    const ridgeWeight = projection[`${metric}_ridge_weight`];
+                    breakdownHtml += `
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>Ridge Regression</h6>
+                                    <div class="confidence-meter">
+                                        <div class="confidence-fill bg-primary" style="width: ${ridgeWeight * 100}%"></div>
+                                    </div>
+                                    <div class="mt-2">${(ridgeWeight * 100).toFixed(1)}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // GBR weight
+                if (projection[`${metric}_gbr_weight`]) {
+                    const gbrWeight = projection[`${metric}_gbr_weight`];
+                    breakdownHtml += `
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>Gradient Boosting</h6>
+                                    <div class="confidence-meter">
+                                        <div class="confidence-fill bg-success" style="width: ${gbrWeight * 100}%"></div>
+                                    </div>
+                                    <div class="mt-2">${(gbrWeight * 100).toFixed(1)}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // XGBoost weight
+                if (projection[`${metric}_xgb_weight`]) {
+                    const xgbWeight = projection[`${metric}_xgb_weight`];
+                    breakdownHtml += `
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>XGBoost</h6>
+                                    <div class="confidence-meter">
+                                        <div class="confidence-fill bg-warning" style="width: ${xgbWeight * 100}%"></div>
+                                    </div>
+                                    <div class="mt-2">${(xgbWeight * 100).toFixed(1)}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                breakdownHtml += `
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add explanations if available
+            if (projection[`${metric}_form_explanation`] || 
+                projection[`${metric}_matchup_explanation`] || 
+                projection[`${metric}_schedule_explanation`]) {
+                
+                breakdownHtml += `
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h5>Detailed Explanations</h5>
+                            <div class="card">
+                                <div class="card-body">
+                `;
+                
+                if (projection[`${metric}_form_explanation`]) {
+                    breakdownHtml += `
+                        <div class="mb-2">
+                            <strong>Recent Form:</strong> ${projection[`${metric}_form_explanation`]}
+                        </div>
+                    `;
+                }
+                
+                if (projection[`${metric}_matchup_explanation`]) {
+                    breakdownHtml += `
+                        <div class="mb-2">
+                            <strong>Matchup:</strong> ${projection[`${metric}_matchup_explanation`]}
+                        </div>
+                    `;
+                }
+                
+                if (projection[`${metric}_schedule_explanation`]) {
+                    breakdownHtml += `
+                        <div class="mb-2">
+                            <strong>Schedule:</strong> ${projection[`${metric}_schedule_explanation`]}
+                        </div>
+                    `;
+                }
+                
+                breakdownHtml += `
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            modalBody.innerHTML = breakdownHtml;
+            modal.show();
+        }
+        
+        // Export current data to CSV
+        function exportCurrentData() {
+            let dataToExport = [];
+            let filename = '';
+            
+            // Determine which data to export based on current view
+            if (currentView === 'projections') {
+                // Filter projections data
+                dataToExport = projectionsData.filter(item => {
+                    const matchesConfidence = item.confidence >= confidenceThreshold;
+                    const matchesStat = selectedStatType === 'all' || item.stat_type === selectedStatType;
+                    return matchesConfidence && matchesStat;
+                });
+                
+                filename = 'nba_projections_' + new Date().toISOString().split('T')[0] + '.csv';
+            } else if (currentView === 'predictions') {
+                // Filter player predictions data
+                dataToExport = playerPredictionsData.filter(item => {
+                    const statMapping = {
+                        'Points': 'points',
+                        'Rebounds': 'rebounds',
+                        'Assists': 'assists',
+                        '3-PT Made': 'three_pointers_made',
+                        'Fantasy Score': 'fantasy_points'
+                    };
+                    
+                    const mappedStat = statMapping[selectedStatType] || null;
+                    
+                    const matchesConfidence = item.confidence >= confidenceThreshold;
+                    const matchesStat = selectedStatType === 'all' || item.metric === mappedStat;
+                    return matchesConfidence && matchesStat;
+                });
+                
+                filename = 'nba_predictions_' + new Date().toISOString().split('T')[0] + '.csv';
+            } else if (currentView === 'models') {
+                dataToExport = evaluationData;
+                filename = 'nba_model_evaluation_' + new Date().toISOString().split('T')[0] + '.csv';
+            }
+            
+            if (dataToExport.length === 0) {
+                alert('No data to export with current filters');
+                return;
+            }
+            
+            // Convert data to CSV
+            const csvContent = arrayToCSV(dataToExport);
+            
+            // Create download link
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Convert array of objects to CSV
+        function arrayToCSV(data) {
+            // Get headers
+            const headers = Object.keys(data[0]);
+            
+            // Create CSV string
+            let csvContent = headers.join(',') + '\n';
+            
+            // Add rows
+            data.forEach(item => {
+                const row = headers.map(header => {
+                    const value = item[header];
+                    
+                    // Handle different types
+                    if (value === null || value === undefined) {
+                        return '';
+                    } else if (typeof value === 'string') {
+                        // Escape quotes and wrap in quotes
+                        return '"' + value.replace(/"/g, '""') + '"';
+                    } else if (typeof value === 'object') {
+                        // Convert objects to JSON strings
+                        return '"' + JSON.stringify(value).replace(/"/g, '""') + '"';
+                    } else {
+                        return value;
+                    }
+                }).join(',');
+                
+                csvContent += row + '\n';
+            });
+            
+            return csvContent;
+        }
+        
+        // Format metric name for display
+        function formatMetricName(metric) {
+            if (!metric) return '';
+            return metric.charAt(0).toUpperCase() + metric.slice(1).replace(/_/g, ' ');
+        }
+        
+        // Educational tooltips - these can be dynamically created and added to elements
+        function createEducationalTooltip(element, title, content) {
+            const tooltip = document.createElement('span');
+            tooltip.className = 'info-tooltip';
+            tooltip.setAttribute('data-bs-toggle', 'tooltip');
+            tooltip.setAttribute('data-bs-html', 'true');
+            tooltip.setAttribute('title', content);
+            tooltip.innerHTML = 'i';
+            
+            element.appendChild(document.createTextNode(' '));
+            element.appendChild(tooltip);
+            
+            new bootstrap.Tooltip(tooltip, {
+                animation: true,
+                delay: { show: 100, hide: 200 }
+            });
+        }
+        
+        // Create custom tooltip container for enhanced detailed tooltips
+        function createCustomTooltipContainer() {
+            // Create tooltip element if it doesn't exist
+            if (!customTooltipElement) {
+                customTooltipElement = document.createElement('div');
+                customTooltipElement.className = 'custom-tooltip';
+                document.body.appendChild(customTooltipElement);
+            }
+        }
+        
+        // Initialize enhanced tooltip triggers
+        function initializeEnhancedTooltips() {
+            // Add enhanced tooltip triggers for important terms
+            const tooltipTerms = [
+                {
+                    selector: '.prediction-over, .prediction-under',
+                    tooltipType: 'prediction',
+                    getContent: (element) => {
+                        const prediction = element.textContent.trim();
+                        
+                        if (prediction === 'OVER') {
+                            return `
+                                <h5>OVER Prediction</h5>
+                                <p>Our model predicts the player will exceed the line value.</p>
+                                <div class="mt-2 mb-2">
+                                    <strong>Factors that may influence this:</strong>
+                                    <ul class="mb-0 ps-3">
+                                        <li>Recent performance above baseline</li>
+                                        <li>Favorable matchup vs. opponent</li>
+                                        <li>More minutes/usage expected</li>
+                                        <li>Statistical trends point upward</li>
+                                    </ul>
+                                </div>
+                            `;
+                        } else {
+                            return `
+                                <h5>UNDER Prediction</h5>
+                                <p>Our model predicts the player will fall below the line value.</p>
+                                <div class="mt-2 mb-2">
+                                    <strong>Factors that may influence this:</strong>
+                                    <ul class="mb-0 ps-3">
+                                        <li>Recent performance below baseline</li>
+                                        <li>Challenging matchup vs. opponent</li>
+                                        <li>Reduced minutes/usage expected</li>
+                                        <li>Statistical trends point downward</li>
+                                    </ul>
+                                </div>
+                            `;
+                        }
+                    }
+                },
+                {
+                    selector: '[class^="confidence-"]',
+                    tooltipType: 'confidence',
+                    getContent: (element) => {
+                        // Determine confidence level from class
+                        let confidenceLevel = '';
+                        if (element.classList.contains('confidence-very-high')) {
+                            confidenceLevel = 'Very High (85%+)';
+                        } else if (element.classList.contains('confidence-high')) {
+                            confidenceLevel = 'High (75-85%)';
+                        } else if (element.classList.contains('confidence-medium')) {
+                            confidenceLevel = 'Medium (65-75%)';
+                        } else {
+                            confidenceLevel = 'Low (50-65%)';
+                        }
+                        
+                        return `
+                            <h5>${confidenceLevel} Confidence</h5>
+                            <div class="mt-1">
+                                <p>This confidence level indicates how strongly our model believes in this prediction.</p>
+                                <strong>Interpretation:</strong>
+                                <ul class="mb-0 ps-3">
+                                    <li>85%+ : Strongest signals across all factors</li>
+                                    <li>75-85%: Strong signals with minimal conflicting factors</li>
+                                    <li>65-75%: Good signals with some mixed indicators</li>
+                                    <li>50-65%: Moderate signals with conflicting factors</li>
+                                </ul>
+                            </div>
+                        `;
+                    }
+                },
+                {
+                    selector: '.stat-value',
+                    tooltipType: 'stat',
+                    getContent: (element) => {
+                        // Get stat type from closest parent with class stat-card
+                        const statCard = element.closest('.stat-card');
+                        if (!statCard) return '';
+                        
+                        const statLabel = statCard.querySelector('.stat-label');
+                        if (!statLabel) return '';
+                        
+                        const labelText = statLabel.textContent.trim();
+                        
+                        if (labelText.includes('Total Projections')) {
+                            return `
+                                <h5>Total Projections</h5>
+                                <p>The number of player stat projections that match your current filters.</p>
+                                <p>This includes all projections that meet or exceed your selected confidence threshold and match any selected stat type filter.</p>
+                            `;
+                        } else if (labelText.includes('High Confidence')) {
+                            return `
+                                <h5>High Confidence Picks</h5>
+                                <p>Predictions with 80%+ confidence level.</p>
+                                <p>These represent our model's strongest predictions based on multiple factors including player consistency, matchup advantage, and recent form.</p>
+                            `;
+                        } else if (labelText.includes('Over/Under')) {
+                            return `
+                                <h5>Over/Under Ratio</h5>
+                                <p>The ratio of "over" predictions to "under" predictions.</p>
+                                <p>A balanced ratio (close to 1.0) suggests our model isn't biased toward either outcome. Values far from 1.0 may indicate systematic trends in the projection lines.</p>
+                            `;
+                        } else if (labelText.includes('Avg. Edge')) {
+                            return `
+                                <h5>Average Edge</h5>
+                                <p>The average difference between our prediction and the projection line.</p>
+                                <p>Larger values indicate a greater expected edge. This is measured in raw stat units (points, rebounds, etc.).</p>
+                            `;
+                        }
+                        
+                        return '';
+                    }
+                }
+            ];
+            
+            // Add mouseenter and mouseleave events for each tooltip term
+            tooltipTerms.forEach(term => {
+                document.querySelectorAll(term.selector).forEach(element => {
+                    // Skip elements that already have tooltips
+                    if (element.getAttribute('data-has-enhanced-tooltip') === 'true') return;
+                    
+                    element.setAttribute('data-has-enhanced-tooltip', 'true');
+                    element.style.cursor = 'pointer';
+                    element.addEventListener('mouseenter', (event) => showEnhancedTooltip(event, element, term));
+                    element.addEventListener('mouseleave', hideEnhancedTooltip);
+                });
+            });
+        }
+        
+        // Show enhanced tooltip
+        function showEnhancedTooltip(event, element, tooltipInfo) {
+            if (!customTooltipElement) return;
+            
+            // Get tooltip content
+            const content = tooltipInfo.getContent(element);
+            if (!content) return;
+            
+            // Set tooltip content
+            customTooltipElement.innerHTML = content;
+            
+            // Position tooltip
+            const rect = element.getBoundingClientRect();
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+            
+            // Position based on type
+            if (tooltipInfo.tooltipType === 'prediction' || tooltipInfo.tooltipType === 'confidence') {
+                customTooltipElement.style.top = (rect.top + scrollTop - customTooltipElement.offsetHeight - 10) + 'px';
+                customTooltipElement.style.left = (rect.left + scrollLeft + (rect.width / 2) - (customTooltipElement.offsetWidth / 2)) + 'px';
+            } else {
+                customTooltipElement.style.top = (rect.top + scrollTop + rect.height + 10) + 'px';
+                customTooltipElement.style.left = (rect.left + scrollLeft + (rect.width / 2) - (customTooltipElement.offsetWidth / 2)) + 'px';
+            }
+            
+            // Show tooltip with animation
+            customTooltipElement.style.opacity = '0';
+            customTooltipElement.style.display = 'block';
+            
+            gsap.to(customTooltipElement, {
+                opacity: 1,
+                duration: 0.2,
+                ease: 'power1.out'
+            });
+        }
+        
+        // Hide enhanced tooltip
+        function hideEnhancedTooltip() {
+            if (!customTooltipElement) return;
+            
+            gsap.to(customTooltipElement, {
+                opacity: 0,
+                duration: 0.2,
+                ease: 'power1.in',
+                onComplete: () => {
+                    customTooltipElement.style.display = 'none';
+                }
+            });
+        }
+        
+        // Apply enhanced tooltips to new elements
+        function applyEnhancedTooltipsToNewElements() {
+            // This function is called after rendering new elements (like table rows)
+            initializeEnhancedTooltips();
+        }
+        
+        // After loading data, re-initialize enhanced tooltips
+        document.addEventListener('dataLoaded', function() {
+            setTimeout(applyEnhancedTooltipsToNewElements, 500);
+        });
+    </script>
+    
+    <!-- Theme Switcher -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initThemeToggle();
+        });
+
+        function initThemeToggle() {
+            // Create theme toggle button in the navbar
+            const header = document.querySelector('.dashboard-header .container .row');
+            const themeToggleCol = document.createElement('div');
+            themeToggleCol.className = 'col-md-1 d-flex align-items-center justify-content-end';
+            themeToggleCol.setAttribute('data-aos', 'fade-left');
+            themeToggleCol.setAttribute('data-aos-duration', '800');
+            themeToggleCol.setAttribute('data-aos-delay', '300');
+            
+            // Get user's preferred theme from localStorage
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', currentTheme);
+            
+            // Apply theme class to body if dark
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            
+            // Create toggle switch HTML
+            themeToggleCol.innerHTML = `
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox" ${currentTheme === 'dark' ? 'checked' : ''}>
+                        <div class="slider round">
+                            <i class="bi bi-moon-fill"></i>
+                            <i class="bi bi-sun-fill"></i>
+                        </div>
+                    </label>
+                </div>
+            `;
+            
+            // Add toggle to header 
+            header.appendChild(themeToggleCol);
+            
+            // Add event listener to toggle
+            const themeCheckbox = document.getElementById('theme-checkbox');
+            themeCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('dark-theme');
+                    document.body.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                    document.body.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+    </script>
+    
+    <!-- Confetti Animation for High Confidence Picks -->
+    <script>
+        // This could be triggered when a user interacts with a high confidence pick
+        function triggerConfetti() {
+            // Using GSAP for confetti effect
+            const colors = ['#17408B', '#C9082A', '#198754', '#ffc107'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.opacity = '0.8';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.zIndex = '9999';
+                
+                // Random starting position at the top
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = '0';
+                
+                document.body.appendChild(confetti);
+                
+                // Animate with GSAP
+                gsap.to(confetti, {
+                    y: `${window.innerHeight}px`,
+                    x: `${(Math.random() - 0.5) * 200}px`,
+                    rotation: Math.random() * 360,
+                    duration: 1 + Math.random() * 2,
+                    ease: "power1.out",
+                    opacity: 0,
+                    onComplete: () => {
+                        document.body.removeChild(confetti);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

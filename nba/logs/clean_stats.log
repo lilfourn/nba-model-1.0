@@ -1,0 +1,404 @@
+2025-02-24 17:03:49,247 - INFO - Loaded 68586 records from database
+2025-02-24 17:03:49,274 - INFO - Removed 0 duplicate records
+2025-02-24 17:03:49,278 - INFO - Removing 17493 records with minutes < 5
+2025-02-24 17:03:49,289 - INFO - Removed 710 records from 180 players with fewer than 10 games
+2025-02-24 17:03:49,289 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 17:03:49,295 - INFO - Filled 11471 missing values in avg_home_ML_odds with median value
+2025-02-24 17:03:49,296 - INFO - Filled 11471 missing values in avg_away_ML_odds with median value
+2025-02-24 17:03:49,307 - INFO - Handled missing values: 22942 before, 0 after
+2025-02-24 17:03:49,313 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 17:03:49,316 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 17:03:53,057 - INFO - Created date-related features from game_date
+2025-02-24 17:03:53,066 - INFO - Created 'days_rest' feature
+2025-02-24 17:03:53,067 - INFO - Creating team-related features
+2025-02-24 17:03:53,135 - INFO - Created team possession and rating metrics
+2025-02-24 17:03:53,135 - INFO - Created 54 team-related features
+2025-02-24 17:03:53,137 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 17:03:53,147 - INFO - Creating rolling features for player 1/697
+2025-02-24 17:03:53,563 - INFO - Creating rolling features for player 51/697
+2025-02-24 17:03:53,972 - INFO - Creating rolling features for player 101/697
+2025-02-24 17:03:54,380 - INFO - Creating rolling features for player 151/697
+2025-02-24 17:03:54,785 - INFO - Creating rolling features for player 201/697
+2025-02-24 17:03:55,195 - INFO - Creating rolling features for player 251/697
+2025-02-24 17:03:55,602 - INFO - Creating rolling features for player 301/697
+2025-02-24 17:03:56,007 - INFO - Creating rolling features for player 351/697
+2025-02-24 17:03:56,427 - INFO - Creating rolling features for player 401/697
+2025-02-24 17:03:56,834 - INFO - Creating rolling features for player 451/697
+2025-02-24 17:03:57,247 - INFO - Creating rolling features for player 501/697
+2025-02-24 17:03:57,655 - INFO - Creating rolling features for player 551/697
+2025-02-24 17:03:58,097 - INFO - Creating rolling features for player 601/697
+2025-02-24 17:03:58,525 - INFO - Creating rolling features for player 651/697
+2025-02-24 17:03:58,982 - INFO - Created 56457 rolling features for 697 players
+2025-02-24 17:03:59,029 - INFO - Normalized 64 features with StandardScaler
+2025-02-24 17:03:59,032 - INFO - Normalized 6 features with MinMaxScaler
+2025-02-24 17:03:59,033 - INFO - Normalized 2 odds features
+2025-02-24 17:03:59,190 - INFO - Split data by ratio (0.8:0.2): 40034 training samples, 10349 test samples
+2025-02-24 17:03:59,808 - INFO - Successfully saved 50383 records to /Users/lukesmac/Models/nba/data/clean_player_stats.db
+2025-02-24 17:03:59,808 - INFO - Total columns saved: 144
+2025-02-24 17:04:02,384 - INFO - Also saved data to CSV: /Users/lukesmac/Models/nba/data/clean_player_stats.csv
+2025-02-24 17:04:03,120 - INFO - Successfully saved 50383 records to /Users/lukesmac/Models/nba/data/clean_player_stats_non_normalized.db
+2025-02-24 17:04:03,120 - INFO - Total columns saved: 144
+2025-02-24 17:04:05,545 - INFO - Also saved data to CSV: /Users/lukesmac/Models/nba/data/clean_player_stats_non_normalized.csv
+2025-02-24 17:04:07,989 - INFO - Saved train/test splits to /Users/lukesmac/Models/nba/data/clean_player_stats_train.csv and /Users/lukesmac/Models/nba/data/clean_player_stats_test.csv
+2025-02-24 20:50:46,672 - INFO - Loaded 68586 records from database
+2025-02-24 20:50:46,704 - INFO - Removed 0 duplicate records
+2025-02-24 20:50:47,067 - INFO - Detected 686 (1.0%) statistical outliers
+2025-02-24 20:50:47,072 - INFO - Identified 6835 potential career-high performances
+2025-02-24 20:50:47,074 - INFO - Flagged 17493 records with low minutes (< 5)
+2025-02-24 20:50:47,081 - INFO - Filtered dataset has 51093 records after removing low-minutes games
+2025-02-24 20:50:47,088 - INFO - Flagged 710 records from 180 players with <10 games
+2025-02-24 20:50:47,095 - INFO - Final filtered dataset has 50383 records after all cleaning steps
+2025-02-24 20:50:47,095 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 20:50:47,114 - INFO - Identified 0 likely DNP records
+2025-02-24 20:50:47,122 - INFO - Filled 11471 missing values in avg_home_ML_odds with contextual medians
+2025-02-24 20:50:47,128 - INFO - Filled 11471 missing values in avg_away_ML_odds with contextual medians
+2025-02-24 20:50:47,175 - INFO - Filled 16145 missing position values with player's most common position
+2025-02-24 20:50:47,269 - INFO - Filled 16145 missing position_depth values
+2025-02-24 20:50:47,289 - INFO - Handled missing values: 55232 before, 0 after
+2025-02-24 20:50:47,299 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 20:50:47,302 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 20:50:51,051 - INFO - Created date-related features from game_date
+2025-02-24 20:50:51,061 - INFO - Created 'days_rest' feature
+2025-02-24 20:50:51,062 - INFO - Creating team-related features
+2025-02-24 20:50:51,136 - INFO - Created team possession and rating metrics
+2025-02-24 20:50:51,136 - INFO - Created 63 team-related features
+2025-02-24 20:50:51,139 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 20:50:51,150 - INFO - Creating rolling features for player 1/697
+2025-02-24 20:50:52,400 - INFO - Creating rolling features for player 51/697
+2025-02-24 20:50:53,644 - INFO - Creating rolling features for player 101/697
+2025-02-24 20:50:54,888 - INFO - Creating rolling features for player 151/697
+2025-02-24 20:50:56,124 - INFO - Creating rolling features for player 201/697
+2025-02-24 20:50:57,369 - INFO - Creating rolling features for player 251/697
+2025-02-24 20:50:58,638 - INFO - Creating rolling features for player 301/697
+2025-02-24 20:50:59,908 - INFO - Creating rolling features for player 351/697
+2025-02-24 20:51:01,198 - INFO - Creating rolling features for player 401/697
+2025-02-24 20:51:02,459 - INFO - Creating rolling features for player 451/697
+2025-02-24 20:51:03,969 - INFO - Loaded 68586 records from database
+2025-02-24 20:51:04,001 - INFO - Removed 0 duplicate records
+2025-02-24 20:51:04,372 - INFO - Detected 686 (1.0%) statistical outliers
+2025-02-24 20:51:04,378 - INFO - Identified 6835 potential career-high performances
+2025-02-24 20:51:04,380 - INFO - Flagged 17493 records with low minutes (< 5)
+2025-02-24 20:51:04,388 - INFO - Filtered dataset has 51093 records after removing low-minutes games
+2025-02-24 20:51:04,397 - INFO - Flagged 710 records from 180 players with <10 games
+2025-02-24 20:51:04,405 - INFO - Final filtered dataset has 50383 records after all cleaning steps
+2025-02-24 20:51:04,405 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 20:51:04,425 - INFO - Identified 0 likely DNP records
+2025-02-24 20:51:04,433 - INFO - Filled 11471 missing values in avg_home_ML_odds with contextual medians
+2025-02-24 20:51:04,440 - INFO - Filled 11471 missing values in avg_away_ML_odds with contextual medians
+2025-02-24 20:51:04,492 - INFO - Filled 16145 missing position values with player's most common position
+2025-02-24 20:51:04,594 - INFO - Filled 16145 missing position_depth values
+2025-02-24 20:51:04,617 - INFO - Handled missing values: 55232 before, 0 after
+2025-02-24 20:51:04,630 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 20:51:04,634 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 20:51:08,550 - INFO - Created date-related features from game_date
+2025-02-24 20:51:08,560 - INFO - Created 'days_rest' feature
+2025-02-24 20:51:08,561 - INFO - Creating team-related features
+2025-02-24 20:51:08,639 - INFO - Created team possession and rating metrics
+2025-02-24 20:51:08,639 - INFO - Created 63 team-related features
+2025-02-24 20:51:08,642 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 20:51:08,652 - INFO - Creating rolling features for player 1/697
+2025-02-24 20:51:09,924 - INFO - Creating rolling features for player 51/697
+2025-02-24 20:51:11,185 - INFO - Creating rolling features for player 101/697
+2025-02-24 20:51:12,466 - INFO - Creating rolling features for player 151/697
+2025-02-24 20:51:13,715 - INFO - Creating rolling features for player 201/697
+2025-02-24 20:51:14,968 - INFO - Creating rolling features for player 251/697
+2025-02-24 20:51:16,246 - INFO - Creating rolling features for player 301/697
+2025-02-24 20:51:17,499 - INFO - Creating rolling features for player 351/697
+2025-02-24 20:51:18,785 - INFO - Creating rolling features for player 401/697
+2025-02-24 20:51:20,030 - INFO - Creating rolling features for player 451/697
+2025-02-24 20:51:21,287 - INFO - Creating rolling features for player 501/697
+2025-02-24 20:51:22,573 - INFO - Creating rolling features for player 551/697
+2025-02-24 20:51:23,826 - INFO - Creating rolling features for player 601/697
+2025-02-24 20:51:25,093 - INFO - Creating rolling features for player 651/697
+2025-02-24 20:51:26,638 - INFO - Created 128145 rolling and advanced features for 697 players
+2025-02-24 20:51:26,703 - INFO - Creating Vegas odds-based features
+2025-02-24 20:51:26,724 - INFO - Created 12 Vegas odds features
+2025-02-24 20:51:26,768 - INFO - Creating usage metrics
+2025-02-24 20:51:27,101 - INFO - Created usage metrics with rolling windows
+2025-02-24 20:51:27,363 - INFO - Split data by ratio (0.8:0.2): 40034 training samples, 10349 test samples
+2025-02-24 20:51:27,814 - ERROR - Error saving cleaned data: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 20:51:27,814 - ERROR - Error during data cleaning: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 20:54:22,147 - INFO - Loaded 68586 records from database
+2025-02-24 20:54:22,177 - INFO - Removed 0 duplicate records
+2025-02-24 20:54:22,527 - INFO - Detected 686 (1.0%) statistical outliers
+2025-02-24 20:54:22,534 - INFO - Identified 6835 potential career-high performances
+2025-02-24 20:54:22,536 - INFO - Flagged 17493 records with low minutes (< 5)
+2025-02-24 20:54:22,543 - INFO - Filtered dataset has 51093 records after removing low-minutes games
+2025-02-24 20:54:22,549 - INFO - Flagged 710 records from 180 players with <10 games
+2025-02-24 20:54:22,556 - INFO - Final filtered dataset has 50383 records after all cleaning steps
+2025-02-24 20:54:22,556 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 20:54:22,573 - INFO - Identified 0 likely DNP records
+2025-02-24 20:54:22,580 - INFO - Filled 11471 missing values in avg_home_ML_odds with contextual medians
+2025-02-24 20:54:22,586 - INFO - Filled 11471 missing values in avg_away_ML_odds with contextual medians
+2025-02-24 20:54:22,630 - INFO - Filled 16145 missing position values with player's most common position
+2025-02-24 20:54:22,726 - INFO - Filled 16145 missing position_depth values
+2025-02-24 20:54:22,748 - INFO - Handled missing values: 55232 before, 0 after
+2025-02-24 20:54:22,759 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 20:54:22,762 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 20:54:26,607 - INFO - Created date-related features from game_date
+2025-02-24 20:54:26,617 - INFO - Created 'days_rest' feature
+2025-02-24 20:54:26,618 - INFO - Creating team-related features
+2025-02-24 20:54:26,705 - INFO - Created team possession and rating metrics
+2025-02-24 20:54:26,705 - INFO - Created 63 team-related features
+2025-02-24 20:54:26,709 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 20:54:26,720 - INFO - Creating rolling features for player 1/697
+2025-02-24 20:54:28,688 - INFO - Creating rolling features for player 51/697
+2025-02-24 20:54:30,638 - INFO - Creating rolling features for player 101/697
+2025-02-24 20:54:32,685 - INFO - Creating rolling features for player 151/697
+2025-02-24 20:54:34,604 - INFO - Creating rolling features for player 201/697
+2025-02-24 20:54:36,483 - INFO - Creating rolling features for player 251/697
+2025-02-24 20:54:38,464 - INFO - Creating rolling features for player 301/697
+2025-02-24 20:54:40,467 - INFO - Creating rolling features for player 351/697
+2025-02-24 20:54:42,400 - INFO - Creating rolling features for player 401/697
+2025-02-24 20:54:44,487 - INFO - Creating rolling features for player 451/697
+2025-02-24 20:54:46,446 - INFO - Creating rolling features for player 501/697
+2025-02-24 20:54:48,471 - INFO - Creating rolling features for player 551/697
+2025-02-24 20:54:50,388 - INFO - Creating rolling features for player 601/697
+2025-02-24 20:54:52,426 - INFO - Creating rolling features for player 651/697
+2025-02-24 20:54:55,181 - INFO - Created 125979 rolling and advanced features for 697 players
+2025-02-24 20:54:55,285 - INFO - Creating Vegas odds-based features
+2025-02-24 20:54:55,314 - INFO - Created 12 Vegas odds features
+2025-02-24 20:54:55,354 - INFO - Creating usage metrics
+2025-02-24 20:54:55,695 - INFO - Created usage metrics with rolling windows
+2025-02-24 20:54:55,740 - WARNING - Found NaN values in usage_rate_last_5 during normalization, filled with mean
+2025-02-24 20:54:55,740 - WARNING - Found NaN values in shot_volume_last_5 during normalization, filled with mean
+2025-02-24 20:54:55,740 - WARNING - Found NaN values in usage_rate_last_10 during normalization, filled with mean
+2025-02-24 20:54:55,740 - WARNING - Found NaN values in shot_volume_last_10 during normalization, filled with mean
+2025-02-24 20:54:55,741 - WARNING - Found NaN values in usage_rate_last_20 during normalization, filled with mean
+2025-02-24 20:54:55,741 - WARNING - Found NaN values in shot_volume_last_20 during normalization, filled with mean
+2025-02-24 20:54:55,765 - INFO - Normalized 89 features with StandardScaler
+2025-02-24 20:54:55,767 - INFO - Normalized 6 features with MinMaxScaler
+2025-02-24 20:54:55,769 - INFO - Normalized 2 odds features
+2025-02-24 20:54:55,982 - INFO - Split data by ratio (0.8:0.2): 40034 training samples, 10349 test samples
+2025-02-24 20:54:56,406 - ERROR - Error saving cleaned data: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 20:54:56,406 - ERROR - Error during data cleaning: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 21:07:40,834 - INFO - Loaded 68586 records from database
+2025-02-24 21:07:40,862 - INFO - Removed 0 duplicate records
+2025-02-24 21:07:41,207 - INFO - Detected 686 (1.0%) statistical outliers
+2025-02-24 21:07:41,212 - INFO - Identified 6835 potential career-high performances
+2025-02-24 21:07:41,214 - INFO - Flagged 17493 records with low minutes (< 5)
+2025-02-24 21:07:41,221 - INFO - Filtered dataset has 51093 records after removing low-minutes games
+2025-02-24 21:07:41,227 - INFO - Flagged 710 records from 180 players with <10 games
+2025-02-24 21:07:41,234 - INFO - Final filtered dataset has 50383 records after all cleaning steps
+2025-02-24 21:07:41,234 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 21:07:41,250 - INFO - Identified 0 likely DNP records
+2025-02-24 21:07:41,257 - INFO - Filled 11471 missing values in avg_home_ML_odds with contextual medians
+2025-02-24 21:07:41,263 - INFO - Filled 11471 missing values in avg_away_ML_odds with contextual medians
+2025-02-24 21:07:41,308 - INFO - Filled 16145 missing position values with player's most common position
+2025-02-24 21:07:41,403 - INFO - Filled 16145 missing position_depth values
+2025-02-24 21:07:41,423 - INFO - Handled missing values: 55232 before, 0 after
+2025-02-24 21:07:41,433 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 21:07:41,436 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 21:07:45,206 - INFO - Created date-related features from game_date
+2025-02-24 21:07:45,216 - INFO - Created 'days_rest' feature
+2025-02-24 21:07:45,217 - INFO - Creating team-related features
+2025-02-24 21:07:45,300 - INFO - Created team possession and rating metrics
+2025-02-24 21:07:45,300 - INFO - Created 63 team-related features
+2025-02-24 21:07:45,304 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 21:07:45,314 - INFO - Creating rolling features for player 1/697
+2025-02-24 21:07:47,229 - INFO - Creating rolling features for player 51/697
+2025-02-24 21:07:49,178 - INFO - Creating rolling features for player 101/697
+2025-02-24 21:07:51,193 - INFO - Creating rolling features for player 151/697
+2025-02-24 21:07:53,102 - INFO - Creating rolling features for player 201/697
+2025-02-24 21:07:54,979 - INFO - Creating rolling features for player 251/697
+2025-02-24 21:07:57,031 - INFO - Creating rolling features for player 301/697
+2025-02-24 21:07:59,111 - INFO - Creating rolling features for player 351/697
+2025-02-24 21:08:01,130 - INFO - Creating rolling features for player 401/697
+2025-02-24 21:08:03,254 - INFO - Creating rolling features for player 451/697
+2025-02-24 21:08:05,246 - INFO - Creating rolling features for player 501/697
+2025-02-24 21:08:07,287 - INFO - Creating rolling features for player 551/697
+2025-02-24 21:08:09,296 - INFO - Creating rolling features for player 601/697
+2025-02-24 21:08:11,356 - INFO - Creating rolling features for player 651/697
+2025-02-24 21:08:14,328 - INFO - Created 125979 rolling and advanced features for 697 players
+2025-02-24 21:08:14,422 - INFO - Creating Vegas odds-based features
+2025-02-24 21:08:14,445 - INFO - Created 12 Vegas odds features
+2025-02-24 21:08:14,489 - INFO - Creating usage metrics
+2025-02-24 21:08:14,841 - INFO - Created usage metrics with rolling windows
+2025-02-24 21:08:14,883 - WARNING - Found NaN values in usage_rate_last_5 during normalization, filled with mean
+2025-02-24 21:08:14,884 - WARNING - Found NaN values in shot_volume_last_5 during normalization, filled with mean
+2025-02-24 21:08:14,884 - WARNING - Found NaN values in usage_rate_last_10 during normalization, filled with mean
+2025-02-24 21:08:14,884 - WARNING - Found NaN values in shot_volume_last_10 during normalization, filled with mean
+2025-02-24 21:08:14,885 - WARNING - Found NaN values in usage_rate_last_20 during normalization, filled with mean
+2025-02-24 21:08:14,885 - WARNING - Found NaN values in shot_volume_last_20 during normalization, filled with mean
+2025-02-24 21:08:14,916 - INFO - Normalized 89 features with StandardScaler
+2025-02-24 21:08:14,918 - INFO - Normalized 6 features with MinMaxScaler
+2025-02-24 21:08:14,919 - INFO - Normalized 2 odds features
+2025-02-24 21:08:15,139 - INFO - Split data by ratio (0.8:0.2): 40034 training samples, 10349 test samples
+2025-02-24 21:08:15,201 - INFO - Converted datetime column game_date to string format for SQLite compatibility
+2025-02-24 21:08:15,244 - INFO - Saving cleaned data to /Users/lukesmac/Models/nba/data/clean_stats.db with 280 columns
+2025-02-24 21:08:15,631 - ERROR - Error saving cleaned data: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 21:08:15,631 - ERROR - Error details: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 21:08:15,631 - ERROR - Error during data cleaning: Error binding parameter 41: type 'Timestamp' is not supported
+2025-02-24 21:09:17,006 - INFO - Loaded 68586 records from database
+2025-02-24 21:09:17,035 - INFO - Removed 0 duplicate records
+2025-02-24 21:09:17,380 - INFO - Detected 686 (1.0%) statistical outliers
+2025-02-24 21:09:17,386 - INFO - Identified 6835 potential career-high performances
+2025-02-24 21:09:17,387 - INFO - Flagged 17493 records with low minutes (< 5)
+2025-02-24 21:09:17,394 - INFO - Filtered dataset has 51093 records after removing low-minutes games
+2025-02-24 21:09:17,400 - INFO - Flagged 710 records from 180 players with <10 games
+2025-02-24 21:09:17,406 - INFO - Final filtered dataset has 50383 records after all cleaning steps
+2025-02-24 21:09:17,406 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 21:09:17,422 - INFO - Identified 0 likely DNP records
+2025-02-24 21:09:17,429 - INFO - Filled 11471 missing values in avg_home_ML_odds with contextual medians
+2025-02-24 21:09:17,434 - INFO - Filled 11471 missing values in avg_away_ML_odds with contextual medians
+2025-02-24 21:09:17,481 - INFO - Filled 16145 missing position values with player's most common position
+2025-02-24 21:09:17,577 - INFO - Filled 16145 missing position_depth values
+2025-02-24 21:09:17,598 - INFO - Handled missing values: 55232 before, 0 after
+2025-02-24 21:09:17,607 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 21:09:17,611 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 21:09:21,393 - INFO - Created date-related features from game_date
+2025-02-24 21:09:21,402 - INFO - Created 'days_rest' feature
+2025-02-24 21:09:21,403 - INFO - Creating team-related features
+2025-02-24 21:09:21,485 - INFO - Created team possession and rating metrics
+2025-02-24 21:09:21,485 - INFO - Created 63 team-related features
+2025-02-24 21:09:21,489 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 21:09:21,500 - INFO - Creating rolling features for player 1/697
+2025-02-24 21:09:23,086 - INFO - Creating rolling features for player 51/697
+2025-02-24 21:09:24,693 - INFO - Creating rolling features for player 101/697
+2025-02-24 21:09:26,344 - INFO - Creating rolling features for player 151/697
+2025-02-24 21:09:27,857 - INFO - Creating rolling features for player 201/697
+2025-02-24 21:09:29,369 - INFO - Creating rolling features for player 251/697
+2025-02-24 21:09:30,968 - INFO - Creating rolling features for player 301/697
+2025-02-24 21:09:32,629 - INFO - Creating rolling features for player 351/697
+2025-02-24 21:09:34,317 - INFO - Creating rolling features for player 401/697
+2025-02-24 21:09:35,993 - INFO - Creating rolling features for player 451/697
+2025-02-24 21:09:37,586 - INFO - Creating rolling features for player 501/697
+2025-02-24 21:09:39,141 - INFO - Creating rolling features for player 551/697
+2025-02-24 21:09:40,701 - INFO - Creating rolling features for player 601/697
+2025-02-24 21:09:42,286 - INFO - Creating rolling features for player 651/697
+2025-02-24 21:09:43,914 - INFO - Created 125979 rolling and advanced features for 697 players
+2025-02-24 21:09:43,959 - INFO - Creating Vegas odds-based features
+2025-02-24 21:09:43,979 - INFO - Created 12 Vegas odds features
+2025-02-24 21:09:44,007 - INFO - Creating usage metrics
+2025-02-24 21:09:44,294 - INFO - Created usage metrics with rolling windows
+2025-02-24 21:09:44,324 - WARNING - Found NaN values in usage_rate_last_5 during normalization, filled with mean
+2025-02-24 21:09:44,324 - WARNING - Found NaN values in shot_volume_last_5 during normalization, filled with mean
+2025-02-24 21:09:44,324 - WARNING - Found NaN values in usage_rate_last_10 during normalization, filled with mean
+2025-02-24 21:09:44,325 - WARNING - Found NaN values in shot_volume_last_10 during normalization, filled with mean
+2025-02-24 21:09:44,325 - WARNING - Found NaN values in usage_rate_last_20 during normalization, filled with mean
+2025-02-24 21:09:44,325 - WARNING - Found NaN values in shot_volume_last_20 during normalization, filled with mean
+2025-02-24 21:09:44,352 - INFO - Normalized 89 features with StandardScaler
+2025-02-24 21:09:44,354 - INFO - Normalized 6 features with MinMaxScaler
+2025-02-24 21:09:44,355 - INFO - Normalized 2 odds features
+2025-02-24 21:09:44,599 - INFO - Split data by ratio (0.8:0.2): 40034 training samples, 10349 test samples
+2025-02-24 21:09:44,656 - INFO - Converted datetime column game_date to string format
+2025-02-24 21:09:44,720 - INFO - Converted Timestamp objects in column prev_game_date to string format
+2025-02-24 21:09:44,747 - INFO - Preparing to save 50383 records with 280 columns
+2025-02-24 21:09:45,159 - INFO - Saved chunk 1/11
+2025-02-24 21:09:45,603 - INFO - Saved chunk 2/11
+2025-02-24 21:09:46,026 - INFO - Saved chunk 3/11
+2025-02-24 21:09:46,462 - INFO - Saved chunk 4/11
+2025-02-24 21:09:46,898 - INFO - Saved chunk 5/11
+2025-02-24 21:09:47,335 - INFO - Saved chunk 6/11
+2025-02-24 21:09:47,772 - INFO - Saved chunk 7/11
+2025-02-24 21:09:48,206 - INFO - Saved chunk 8/11
+2025-02-24 21:09:48,634 - INFO - Saved chunk 9/11
+2025-02-24 21:09:49,071 - INFO - Saved chunk 10/11
+2025-02-24 21:09:49,125 - INFO - Saved chunk 11/11
+2025-02-24 21:09:49,280 - INFO - Successfully saved 50383 records to /Users/lukesmac/Models/nba/data/clean_stats.db
+2025-02-24 21:09:49,280 - INFO - Dataset too large (50383 rows) for CSV export, skipping CSV creation
+2025-02-24 21:09:49,315 - INFO - Converted datetime column game_date to string format
+2025-02-24 21:09:49,363 - INFO - Converted Timestamp objects in column prev_game_date to string format
+2025-02-24 21:09:49,377 - INFO - Preparing to save 40034 records with 280 columns
+2025-02-24 21:09:49,796 - INFO - Saved chunk 1/9
+2025-02-24 21:09:50,247 - INFO - Saved chunk 2/9
+2025-02-24 21:09:50,673 - INFO - Saved chunk 3/9
+2025-02-24 21:09:51,109 - INFO - Saved chunk 4/9
+2025-02-24 21:09:51,545 - INFO - Saved chunk 5/9
+2025-02-24 21:09:51,980 - INFO - Saved chunk 6/9
+2025-02-24 21:09:52,415 - INFO - Saved chunk 7/9
+2025-02-24 21:09:52,854 - INFO - Saved chunk 8/9
+2025-02-24 21:09:52,878 - INFO - Saved chunk 9/9
+2025-02-24 21:09:52,999 - INFO - Successfully saved 40034 records to /Users/lukesmac/Models/nba/data/clean_stats_train.db
+2025-02-24 21:09:56,588 - INFO - Also saved data to CSV: /Users/lukesmac/Models/nba/data/clean_stats_train.csv
+2025-02-24 21:09:56,600 - INFO - Converted datetime column game_date to string format
+2025-02-24 21:09:56,613 - INFO - Converted Timestamp objects in column prev_game_date to string format
+2025-02-24 21:09:56,619 - INFO - Preparing to save 10349 records with 280 columns
+2025-02-24 21:09:57,043 - INFO - Saved chunk 1/3
+2025-02-24 21:09:57,486 - INFO - Saved chunk 2/3
+2025-02-24 21:09:57,537 - INFO - Saved chunk 3/3
+2025-02-24 21:09:57,572 - INFO - Successfully saved 10349 records to /Users/lukesmac/Models/nba/data/clean_stats_test.db
+2025-02-24 21:09:58,485 - INFO - Also saved data to CSV: /Users/lukesmac/Models/nba/data/clean_stats_test.csv
+2025-02-24 21:09:58,488 - INFO - Saved train/test splits to /Users/lukesmac/Models/nba/data/clean_stats_train.db and /Users/lukesmac/Models/nba/data/clean_stats_test.db
+2025-02-24 21:12:24,464 - INFO - Loaded 68586 records from database
+2025-02-24 21:12:24,497 - INFO - Removed 0 duplicate records
+2025-02-24 21:12:24,863 - INFO - Detected 686 (1.0%) statistical outliers
+2025-02-24 21:12:24,871 - INFO - Identified 6835 potential career-high performances
+2025-02-24 21:12:24,874 - INFO - Flagged 17493 records with low minutes (< 5)
+2025-02-24 21:12:24,882 - INFO - Filtered dataset has 51093 records after removing low-minutes games
+2025-02-24 21:12:24,889 - INFO - Flagged 710 records from 180 players with <10 games
+2025-02-24 21:12:24,896 - INFO - Final filtered dataset has 50383 records after all cleaning steps
+2025-02-24 21:12:24,896 - INFO - Cleaned 18203 (26.5%) records with obvious errors or insufficient data
+2025-02-24 21:12:24,914 - INFO - Identified 0 likely DNP records
+2025-02-24 21:12:24,922 - INFO - Filled 11471 missing values in avg_home_ML_odds with contextual medians
+2025-02-24 21:12:24,927 - INFO - Filled 11471 missing values in avg_away_ML_odds with contextual medians
+2025-02-24 21:12:24,975 - INFO - Filled 16145 missing position values with player's most common position
+2025-02-24 21:12:25,073 - INFO - Filled 16145 missing position_depth values
+2025-02-24 21:12:25,095 - INFO - Handled missing values: 55232 before, 0 after
+2025-02-24 21:12:25,106 - INFO - Encoded 'team' column with 30 unique values
+2025-02-24 21:12:25,109 - INFO - Encoded 'opponent' column with 30 unique values
+2025-02-24 21:12:28,995 - INFO - Created date-related features from game_date
+2025-02-24 21:12:29,008 - INFO - Created 'days_rest' feature
+2025-02-24 21:12:29,009 - INFO - Creating team-related features
+2025-02-24 21:12:29,109 - INFO - Created team possession and rating metrics
+2025-02-24 21:12:29,109 - INFO - Created 63 team-related features
+2025-02-24 21:12:29,112 - INFO - Creating player rolling averages with windows: [3, 5, 10, 20]
+2025-02-24 21:12:29,125 - INFO - Creating rolling features for player 1/697
+2025-02-24 21:12:30,739 - INFO - Creating rolling features for player 51/697
+2025-02-24 21:12:32,355 - INFO - Creating rolling features for player 101/697
+2025-02-24 21:12:34,078 - INFO - Creating rolling features for player 151/697
+2025-02-24 21:12:35,666 - INFO - Creating rolling features for player 201/697
+2025-02-24 21:12:37,223 - INFO - Creating rolling features for player 251/697
+2025-02-24 21:12:38,849 - INFO - Creating rolling features for player 301/697
+2025-02-24 21:12:40,472 - INFO - Creating rolling features for player 351/697
+2025-02-24 21:12:42,119 - INFO - Creating rolling features for player 401/697
+2025-02-24 21:12:43,763 - INFO - Creating rolling features for player 451/697
+2025-02-24 21:12:45,383 - INFO - Creating rolling features for player 501/697
+2025-02-24 21:12:46,954 - INFO - Creating rolling features for player 551/697
+2025-02-24 21:12:48,552 - INFO - Creating rolling features for player 601/697
+2025-02-24 21:12:50,104 - INFO - Creating rolling features for player 651/697
+2025-02-24 21:12:51,778 - INFO - Created 125979 rolling and advanced features for 697 players
+2025-02-24 21:12:51,832 - INFO - Creating Vegas odds-based features
+2025-02-24 21:12:51,854 - INFO - Created 12 Vegas odds features
+2025-02-24 21:12:51,899 - INFO - Creating usage metrics
+2025-02-24 21:12:52,208 - INFO - Created usage metrics with rolling windows
+2025-02-24 21:12:52,463 - INFO - Split data by ratio (0.8:0.2): 40034 training samples, 10349 test samples
+2025-02-24 21:12:52,509 - INFO - Converted datetime column game_date to string format
+2025-02-24 21:12:52,570 - INFO - Converted Timestamp objects in column prev_game_date to string format
+2025-02-24 21:12:52,591 - INFO - Preparing to save 50383 records with 286 columns
+2025-02-24 21:12:53,304 - INFO - Saved chunk 1/11
+2025-02-24 21:12:53,699 - INFO - Saved chunk 2/11
+2025-02-24 21:12:54,093 - INFO - Saved chunk 3/11
+2025-02-24 21:12:54,484 - INFO - Saved chunk 4/11
+2025-02-24 21:12:54,878 - INFO - Saved chunk 5/11
+2025-02-24 21:12:55,269 - INFO - Saved chunk 6/11
+2025-02-24 21:12:55,659 - INFO - Saved chunk 7/11
+2025-02-24 21:12:56,044 - INFO - Saved chunk 8/11
+2025-02-24 21:12:56,437 - INFO - Saved chunk 9/11
+2025-02-24 21:12:56,828 - INFO - Saved chunk 10/11
+2025-02-24 21:12:56,877 - INFO - Saved chunk 11/11
+2025-02-24 21:12:57,056 - INFO - Successfully saved 50383 records to /Users/lukesmac/Models/nba/data/clean_stats.db
+2025-02-24 21:12:57,057 - INFO - Dataset too large (50383 rows) for CSV export, skipping CSV creation
+2025-02-24 21:12:57,095 - INFO - Converted datetime column game_date to string format
+2025-02-24 21:12:57,142 - INFO - Converted Timestamp objects in column prev_game_date to string format
+2025-02-24 21:12:57,159 - INFO - Preparing to save 40034 records with 286 columns
+2025-02-24 21:12:57,808 - INFO - Saved chunk 1/9
+2025-02-24 21:12:58,208 - INFO - Saved chunk 2/9
+2025-02-24 21:12:58,600 - INFO - Saved chunk 3/9
+2025-02-24 21:12:59,008 - INFO - Saved chunk 4/9
+2025-02-24 21:12:59,403 - INFO - Saved chunk 5/9
+2025-02-24 21:12:59,796 - INFO - Saved chunk 6/9
+2025-02-24 21:13:00,190 - INFO - Saved chunk 7/9
+2025-02-24 21:13:00,585 - INFO - Saved chunk 8/9
+2025-02-24 21:13:00,611 - INFO - Saved chunk 9/9
+2025-02-24 21:13:00,758 - INFO - Successfully saved 40034 records to /Users/lukesmac/Models/nba/data/clean_stats_train.db
+2025-02-24 21:13:03,746 - INFO - Also saved data to CSV: /Users/lukesmac/Models/nba/data/clean_stats_train.csv
+2025-02-24 21:13:03,759 - INFO - Converted datetime column game_date to string format
+2025-02-24 21:13:03,772 - INFO - Converted Timestamp objects in column prev_game_date to string format
+2025-02-24 21:13:03,778 - INFO - Preparing to save 10349 records with 286 columns
+2025-02-24 21:13:04,217 - INFO - Saved chunk 1/3
+2025-02-24 21:13:04,621 - INFO - Saved chunk 2/3
+2025-02-24 21:13:04,669 - INFO - Saved chunk 3/3
+2025-02-24 21:13:04,706 - INFO - Successfully saved 10349 records to /Users/lukesmac/Models/nba/data/clean_stats_test.db
+2025-02-24 21:13:05,466 - INFO - Also saved data to CSV: /Users/lukesmac/Models/nba/data/clean_stats_test.csv
+2025-02-24 21:13:05,469 - INFO - Saved train/test splits to /Users/lukesmac/Models/nba/data/clean_stats_train.db and /Users/lukesmac/Models/nba/data/clean_stats_test.db

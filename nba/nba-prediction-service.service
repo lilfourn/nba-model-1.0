@@ -1,0 +1,16 @@
+[Unit]
+Description=NBA Prediction Pipeline Automation Service
+After=network.target
+
+[Service]
+User=lukesmac
+WorkingDirectory=/Users/lukesmac/Models
+ExecStart=/usr/bin/python3 /Users/lukesmac/Models/nba/automated_pipeline.py --schedule
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
