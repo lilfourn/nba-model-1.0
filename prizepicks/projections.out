@@ -2279,3 +2279,41 @@ Kevin Durant (ID: 28336662792, Team: PHX): 3-PT Made = 2.5 (Start: 2025-02-25T20
 CJ McCollum (ID: 28168235349, Team: NOP): Rebs+Asts = 8.0 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:17:37.786930)
 Ja Morant (ID: 28958859869, Team: MEM): Assists = 7.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:12:36.392259)
 2025-02-25 00:17:37,805 - INFO - Completed projection fetch and store job in 0.45 seconds
+2025-02-25 00:22:38,784 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 281 NBA projections
+Found 1231 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 21 new projections
+- Found 260 existing identical projections (preserved)
+- Skipped 0 combo projections
+- Matched 277 players with NBA player IDs
+Total projections in database: 2721
+
+Latest projections with player IDs:
+Desmond Bane (ID: 28328616399, Team: MEM): Pts+Rebs = 25.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:22:39.133553)
+Desmond Bane (ID: 28328616399, Team: MEM): Pts+Rebs+Asts = 30.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:22:39.133553)
+Bradley Beal (ID: 28768759882, Team: PHX): Pts+Rebs = 22.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:22:39.133553)
+Bradley Beal (ID: 28768759882, Team: PHX): Pts+Rebs+Asts = 26.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:22:39.133553)
+Ja Morant (ID: 28958859869, Team: MEM): Pts+Rebs+Asts = 34.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:22:39.133553)
+2025-02-25 00:22:39,149 - INFO - Completed projection fetch and store job in 0.37 seconds
+2025-02-25 00:27:40,054 - INFO - Starting projection fetch and store job
+Fetching projections from https://partner-api.prizepicks.com/projections
+Found 289 NBA projections
+Found 1231 players
+Found 62 stat types
+Successfully processed NBA projections:
+- Added 11 new projections
+- Found 278 existing identical projections (preserved)
+- Skipped 0 combo projections
+- Matched 285 players with NBA player IDs
+Total projections in database: 2732
+
+Latest projections with player IDs:
+Desmond Bane (ID: 28328616399, Team: MEM): Pts+Asts = 24.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:27:40.204125)
+Bradley Beal (ID: 28768759882, Team: PHX): Pts+Asts = 22.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:27:40.204125)
+Ja Morant (ID: 28958859869, Team: MEM): Pts+Asts = 29.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:27:40.204125)
+Devin Booker (ID: 28898319129, Team: PHX): Pts+Asts = 34.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:27:40.204125)
+Jaren Jackson Jr. (ID: 28788839869, Team: MEM): Pts+Asts = 23.5 (Start: 2025-02-25T20:10:00-05:00, Added: 2025-02-25T00:27:40.204125)
+2025-02-25 00:27:40,222 - INFO - Completed projection fetch and store job in 0.17 seconds

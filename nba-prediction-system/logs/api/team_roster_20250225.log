@@ -1,0 +1,126 @@
+2025-02-25 00:25:55,449 - INFO - Starting team roster fetching process
+2025-02-25 00:25:55,450 - INFO - Database and tables created successfully
+2025-02-25 00:25:55,450 - INFO - Fetching roster for ATL
+2025-02-25 00:25:56,688 - INFO - Successfully stored roster data for ATL
+2025-02-25 00:25:56,689 - INFO - Fetching roster for BKN
+2025-02-25 00:25:57,150 - INFO - Successfully stored roster data for BKN
+2025-02-25 00:25:57,150 - INFO - Fetching roster for BOS
+2025-02-25 00:25:57,520 - INFO - Successfully stored roster data for BOS
+2025-02-25 00:25:57,521 - INFO - Fetching roster for CHA
+2025-02-25 00:25:57,961 - INFO - Successfully stored roster data for CHA
+2025-02-25 00:25:57,962 - INFO - Fetching roster for CHI
+2025-02-25 00:25:58,380 - INFO - Successfully stored roster data for CHI
+2025-02-25 00:25:58,380 - INFO - Fetching roster for CLE
+2025-02-25 00:25:58,761 - INFO - Successfully stored roster data for CLE
+2025-02-25 00:25:58,761 - INFO - Fetching roster for DAL
+2025-02-25 00:25:59,114 - INFO - Successfully stored roster data for DAL
+2025-02-25 00:25:59,114 - INFO - Fetching roster for DEN
+2025-02-25 00:25:59,556 - INFO - Successfully stored roster data for DEN
+2025-02-25 00:25:59,556 - INFO - Fetching roster for DET
+2025-02-25 00:26:00,009 - INFO - Successfully stored roster data for DET
+2025-02-25 00:26:00,009 - INFO - Fetching roster for GS
+2025-02-25 00:26:00,374 - INFO - Successfully stored roster data for GS
+2025-02-25 00:26:00,374 - INFO - Fetching roster for HOU
+2025-02-25 00:26:00,820 - INFO - Successfully stored roster data for HOU
+2025-02-25 00:26:00,820 - INFO - Fetching roster for IND
+2025-02-25 00:26:01,341 - INFO - Successfully stored roster data for IND
+2025-02-25 00:26:01,341 - INFO - Fetching roster for LAC
+2025-02-25 00:26:01,706 - INFO - Successfully stored roster data for LAC
+2025-02-25 00:26:01,707 - INFO - Fetching roster for LAL
+2025-02-25 00:26:02,147 - INFO - Successfully stored roster data for LAL
+2025-02-25 00:26:02,147 - INFO - Fetching roster for MEM
+2025-02-25 00:26:02,565 - INFO - Successfully stored roster data for MEM
+2025-02-25 00:26:02,565 - INFO - Fetching roster for MIA
+2025-02-25 00:26:02,941 - INFO - Successfully stored roster data for MIA
+2025-02-25 00:26:02,942 - INFO - Fetching roster for MIL
+2025-02-25 00:26:03,403 - INFO - Successfully stored roster data for MIL
+2025-02-25 00:26:03,403 - INFO - Fetching roster for MIN
+2025-02-25 00:26:03,780 - INFO - Successfully stored roster data for MIN
+2025-02-25 00:26:03,781 - INFO - Fetching roster for NO
+2025-02-25 00:26:04,252 - INFO - Successfully stored roster data for NO
+2025-02-25 00:26:04,253 - INFO - Fetching roster for NY
+2025-02-25 00:26:04,679 - INFO - Successfully stored roster data for NY
+2025-02-25 00:26:04,680 - INFO - Fetching roster for OKC
+2025-02-25 00:26:05,084 - INFO - Successfully stored roster data for OKC
+2025-02-25 00:26:05,085 - INFO - Fetching roster for ORL
+2025-02-25 00:26:05,538 - INFO - Successfully stored roster data for ORL
+2025-02-25 00:26:05,538 - INFO - Fetching roster for PHI
+2025-02-25 00:26:05,888 - INFO - Successfully stored roster data for PHI
+2025-02-25 00:26:05,888 - INFO - Fetching roster for PHO
+2025-02-25 00:26:06,338 - INFO - Successfully stored roster data for PHO
+2025-02-25 00:26:06,338 - INFO - Fetching roster for POR
+2025-02-25 00:26:06,793 - INFO - Successfully stored roster data for POR
+2025-02-25 00:26:06,793 - INFO - Fetching roster for SA
+2025-02-25 00:26:07,136 - INFO - Successfully stored roster data for SA
+2025-02-25 00:26:07,136 - INFO - Fetching roster for SAC
+2025-02-25 00:26:07,593 - INFO - Successfully stored roster data for SAC
+2025-02-25 00:26:07,594 - INFO - Fetching roster for TOR
+2025-02-25 00:26:07,954 - INFO - Successfully stored roster data for TOR
+2025-02-25 00:26:07,955 - INFO - Fetching roster for UTA
+2025-02-25 00:26:08,396 - INFO - Successfully stored roster data for UTA
+2025-02-25 00:26:08,396 - INFO - Fetching roster for WAS
+2025-02-25 00:26:08,762 - INFO - Successfully stored roster data for WAS
+2025-02-25 00:26:08,763 - INFO - Team roster fetching process completed
+2025-02-25 00:27:48,512 - INFO - Starting team roster fetching process
+2025-02-25 00:27:48,512 - INFO - Database and tables created successfully
+2025-02-25 00:27:48,512 - INFO - Fetching roster for ATL
+2025-02-25 00:27:48,938 - INFO - Successfully stored roster data for ATL
+2025-02-25 00:27:48,938 - INFO - Fetching roster for BKN
+2025-02-25 00:27:49,310 - INFO - Successfully stored roster data for BKN
+2025-02-25 00:27:49,311 - INFO - Fetching roster for BOS
+2025-02-25 00:27:49,715 - INFO - Successfully stored roster data for BOS
+2025-02-25 00:27:49,715 - INFO - Fetching roster for CHA
+2025-02-25 00:27:50,061 - INFO - Successfully stored roster data for CHA
+2025-02-25 00:27:50,062 - INFO - Fetching roster for CHI
+2025-02-25 00:27:50,444 - INFO - Successfully stored roster data for CHI
+2025-02-25 00:27:50,444 - INFO - Fetching roster for CLE
+2025-02-25 00:27:50,807 - INFO - Successfully stored roster data for CLE
+2025-02-25 00:27:50,807 - INFO - Fetching roster for DAL
+2025-02-25 00:27:51,223 - INFO - Successfully stored roster data for DAL
+2025-02-25 00:27:51,223 - INFO - Fetching roster for DEN
+2025-02-25 00:27:51,574 - INFO - Successfully stored roster data for DEN
+2025-02-25 00:27:51,574 - INFO - Fetching roster for DET
+2025-02-25 00:27:52,079 - INFO - Successfully stored roster data for DET
+2025-02-25 00:27:52,079 - INFO - Fetching roster for GS
+2025-02-25 00:27:52,710 - INFO - Successfully stored roster data for GS
+2025-02-25 00:27:52,710 - INFO - Fetching roster for HOU
+2025-02-25 00:27:53,091 - INFO - Successfully stored roster data for HOU
+2025-02-25 00:27:53,091 - INFO - Fetching roster for IND
+2025-02-25 00:27:53,467 - INFO - Successfully stored roster data for IND
+2025-02-25 00:27:53,467 - INFO - Fetching roster for LAC
+2025-02-25 00:27:53,858 - INFO - Successfully stored roster data for LAC
+2025-02-25 00:27:53,859 - INFO - Fetching roster for LAL
+2025-02-25 00:27:54,217 - INFO - Successfully stored roster data for LAL
+2025-02-25 00:27:54,217 - INFO - Fetching roster for MEM
+2025-02-25 00:27:54,581 - INFO - Successfully stored roster data for MEM
+2025-02-25 00:27:54,581 - INFO - Fetching roster for MIA
+2025-02-25 00:27:54,939 - INFO - Successfully stored roster data for MIA
+2025-02-25 00:27:54,939 - INFO - Fetching roster for MIL
+2025-02-25 00:27:55,304 - INFO - Successfully stored roster data for MIL
+2025-02-25 00:27:55,304 - INFO - Fetching roster for MIN
+2025-02-25 00:27:55,654 - INFO - Successfully stored roster data for MIN
+2025-02-25 00:27:55,655 - INFO - Fetching roster for NO
+2025-02-25 00:27:56,054 - INFO - Successfully stored roster data for NO
+2025-02-25 00:27:56,054 - INFO - Fetching roster for NY
+2025-02-25 00:27:56,424 - INFO - Successfully stored roster data for NY
+2025-02-25 00:27:56,424 - INFO - Fetching roster for OKC
+2025-02-25 00:27:56,770 - INFO - Successfully stored roster data for OKC
+2025-02-25 00:27:56,770 - INFO - Fetching roster for ORL
+2025-02-25 00:27:57,126 - INFO - Successfully stored roster data for ORL
+2025-02-25 00:27:57,127 - INFO - Fetching roster for PHI
+2025-02-25 00:27:57,488 - INFO - Successfully stored roster data for PHI
+2025-02-25 00:27:57,488 - INFO - Fetching roster for PHO
+2025-02-25 00:27:57,875 - INFO - Successfully stored roster data for PHO
+2025-02-25 00:27:57,875 - INFO - Fetching roster for POR
+2025-02-25 00:27:58,225 - INFO - Successfully stored roster data for POR
+2025-02-25 00:27:58,225 - INFO - Fetching roster for SA
+2025-02-25 00:27:58,582 - INFO - Successfully stored roster data for SA
+2025-02-25 00:27:58,582 - INFO - Fetching roster for SAC
+2025-02-25 00:27:59,002 - INFO - Successfully stored roster data for SAC
+2025-02-25 00:27:59,003 - INFO - Fetching roster for TOR
+2025-02-25 00:27:59,508 - INFO - Successfully stored roster data for TOR
+2025-02-25 00:27:59,508 - INFO - Fetching roster for UTA
+2025-02-25 00:27:59,883 - INFO - Successfully stored roster data for UTA
+2025-02-25 00:27:59,883 - INFO - Fetching roster for WAS
+2025-02-25 00:28:00,257 - INFO - Successfully stored roster data for WAS
+2025-02-25 00:28:00,258 - INFO - Team roster fetching process completed
